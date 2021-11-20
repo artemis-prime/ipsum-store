@@ -1,0 +1,15 @@
+{
+  "name": "ipsum-store",
+  "version": "1.0.0",
+  "main": "web/dist/index.js",
+  "private": true,
+  "workspaces": [
+    "web",
+    "shared-types",
+    "shared-util",
+    "server/functions"
+  ],
+  "repository": "git@github.com:artemis-prime/ipsum-store.git",
+  "author": "artemis prime <artemisprimedev@gmail.com>",
+  "license": "GPL3.0"
+}
