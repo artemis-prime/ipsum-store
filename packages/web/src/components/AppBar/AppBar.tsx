@@ -21,7 +21,6 @@ import type {
 } from '~/types/app'
 
 import TenantOrgSelector from './TenantOrgSelector'
-import TestModeSwitch from './TestModeSwitch'
 
 import { useIsMobile } from '~/util'
 import MAIN_MENU from '~/settings/app/mainNav'
@@ -75,7 +74,7 @@ const AppBar: React.FC<{
       <div className={cx(s.menuShelf, s.menuShelfTop, 'header-outermost')}>
         <div className={cx(s.menuShelfInner, 'header-inner')} >
           <div className={cx(s.menuSectionOuter, s.leftMenu)}>
-            <PaymintoLogo className={s.logo} size='small' />
+            <IpsumLogo className={s.logo} size='small' />
           </div>
           <div className={cx(s.menuSectionOuter, s.rightMenu)}>
             <MenuButtons navElements={RIGHT_COMMON} />
@@ -94,9 +93,6 @@ const AppBar: React.FC<{
             <TenantOrgSelector className={s.orgSelector}/>
             <MenuButtons navElements={MAIN_MENU} />
           </div>
-          <div className={cx(s.menuSectionOuter, s.rightMenu)}>
-            <TestModeSwitch />
-          </div>
         </>)} 
         </div>
       </div>
@@ -111,7 +107,7 @@ export default AppBar
 
     <div className={cx(s.menuSectionOuter, s.leftMenu,  className)}>
         <Link external to='https://payminto.com' className={s.logoLink}>
-          <PaymintoLogo text={APP_NAME} size={(desktop) ? 'large' : 'small'} />
+          <IpsumLogo text={APP_NAME} size={(desktop) ? 'large' : 'small'} />
         </Link>
         {desktop && currentFirebaseUser && (<>
           <TenantOrgSelector />

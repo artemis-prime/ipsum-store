@@ -25,7 +25,7 @@ $padding-factor-general: 3;
   // Having a scope helps override the Mui defaults (that have bugs we couldn't work around)
 .sass-root {
 
-  header, footer, .main-section {
+  header, footer, .main-section, .header-outermost {
     width: 100%;
     display: flex;
     flex-direction: row;

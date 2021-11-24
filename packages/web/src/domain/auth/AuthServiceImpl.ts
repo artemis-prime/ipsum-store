@@ -90,7 +90,7 @@ class AuthServiceImpl implements AuthService  {
             // corresponding IpsumUser, since we need to know the uid to assign.
           if (!!this.currentIpsumUser) {
             this.disposers.push( await firestore
-              .collection(COLLECTIONS.PAYMINTO_USERS)
+              .collection(COLLECTIONS.IPSUM_USERS)
               .doc(fbUser.uid)
               .onSnapshot( async (doc) => {
                 if (doc.exists) {
@@ -122,14 +122,14 @@ class AuthServiceImpl implements AuthService  {
     return new Promise<UserTenantOrgsResponse>( async(resolve, reject) => {
       try {
         this._setQueryLoading(true)
-        const userSnap = await firestore.collection(COLLECTIONS.PAYMINTO_USERS)
+        const userSnap = await firestore.collection(COLLECTIONS.IPSUM_USERS)
           .where('email', '==', email)
           .limit(1)
           .get()
 
         const user = userSnap.empty ? undefined : userSnap.docs[0].data() as IpsumUser 
 
-        const adminOrgsSnap = await firestore.collection(COLLECTIONS.CLIENT_ORGS)
+        const adminOrgsSnap = await firestore.collection(COLLECTIONS.TENANT_ORGS)
           .where('adminEmail', '==', email)
           .get()
 
@@ -145,7 +145,7 @@ class AuthServiceImpl implements AuthService  {
           })
         })
 
-        const memberOrgsSnap = await firestore.collection(COLLECTIONS.CLIENT_ORGS)
+        const memberOrgsSnap = await firestore.collection(COLLECTIONS.TENANT_ORGS)
           .where('users', 'array-contains', email)
           .get()
 
@@ -199,7 +199,7 @@ class AuthServiceImpl implements AuthService  {
         const userCredential = await firebaseAuth.createUserWithEmailAndPassword(email, password)
         const uid = userCredential.user!.uid
         await firestore
-          .collection(COLLECTIONS.PAYMINTO_USERS)
+          .collection(COLLECTIONS.IPSUM_USERS)
           .doc(uid)
           .set({ 
             uid, 
@@ -228,7 +228,7 @@ class AuthServiceImpl implements AuthService  {
         this._setQueryLoading(false)
 
         const orgDoc = await firestore
-          .collection(COLLECTIONS.CLIENT_ORGS)
+          .collection(COLLECTIONS.TENANT_ORGS)
           .doc(params.name)  
           .get()
 
@@ -249,7 +249,7 @@ class AuthServiceImpl implements AuthService  {
         }
 
         await firestore
-          .collection(COLLECTIONS.CLIENT_ORGS)
+          .collection(COLLECTIONS.TENANT_ORGS)
           .doc(tenantOrg.name)  
           .set(tenantOrg)
     
@@ -367,7 +367,7 @@ class AuthServiceImpl implements AuthService  {
     return new Promise<IpsumUser>( async(resolve, reject) => {
       try {
         this._setQueryLoading(true)
-        const adminOrgsSnap = await firestore.collection(COLLECTIONS.CLIENT_ORGS)
+        const adminOrgsSnap = await firestore.collection(COLLECTIONS.TENANT_ORGS)
           .where('adminEmail', '==', user.email)
           .get()
 
@@ -381,7 +381,7 @@ class AuthServiceImpl implements AuthService  {
           })
         })
 
-        const memberOrgsSnap = await firestore.collection(COLLECTIONS.CLIENT_ORGS)
+        const memberOrgsSnap = await firestore.collection(COLLECTIONS.TENANT_ORGS)
           .where('users', 'array-contains', user.email)
           .get()
 
@@ -435,7 +435,7 @@ class AuthServiceImpl implements AuthService  {
 
     return new Promise<IpsumUser | undefined>( async (resolve, reject) => {
       try {
-        const userDoc = await firestore.collection(COLLECTIONS.PAYMINTO_USERS)
+        const userDoc = await firestore.collection(COLLECTIONS.IPSUM_USERS)
           .doc(uid)
           .get()
   
@@ -479,7 +479,7 @@ class AuthServiceImpl implements AuthService  {
           // corresponding IpsumUser, since we need to know the uid to assign.
         if (!ipsumUser) {
           userUnsubscribe = await firestore
-            .collection(COLLECTIONS.PAYMINTO_USERS)
+            .collection(COLLECTIONS.IPSUM_USERS)
             .doc(fbUser.uid)
             .onSnapshot( async (doc) => {
               if (doc.exists) {

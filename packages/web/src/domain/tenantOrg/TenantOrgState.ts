@@ -2,7 +2,7 @@ import type { TenantOrg } from '@ipsum-labs/dash-types'
 
 export default interface TenantOrgState {
 
-  tenantOrgOrgName: string 
+  tenantOrgName: string 
   setTenantOrgName(n: string): void
   tenantOrg: TenantOrg | undefined
   tenantOrgLoading: boolean

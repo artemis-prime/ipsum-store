@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 
-const PaymintoLogo: React.FC<{
+const IpsumLogo: React.FC<{
   size: 'small' | 'med' | 'large'
   className?: string
 }> = ({
@@ -80,13 +80,6 @@ const PaymintoLogo: React.FC<{
 
   return (
     <div className={cx(s.outer, (className) ? className : '')} >
-      <img 
-        className={s.image} 
-        alt="logo.png"
-        width={l.image.w}
-        height={l.image.h}
-        src={l.image.name}
-      /> 
       <div 
         className={s.text} 
         style={{
@@ -94,9 +87,19 @@ const PaymintoLogo: React.FC<{
           lineHeight: l.image.h + 'px', 
           ...spreadMe
         }}
-      >payminto</div>
+      >ipsum messenger</div>
     </div>
   )
 }
 
-export default PaymintoLogo
+export default IpsumLogo
+
+/*
+      <img 
+        className={s.image} 
+        alt="logo.png"
+        width={l.image.w}
+        height={l.image.h}
+        src={l.image.name}
+      /> 
+*/
