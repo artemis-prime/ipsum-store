@@ -10,7 +10,7 @@ import {
   LoginPage,
   SignupPage,
   RequestPasswordUpdatePage,
-  TestPage,
+  ThreadPage,
 } from './pages'
 
 import { useAuthService } from '~/domain/auth'
@@ -18,7 +18,10 @@ import { useAuthService } from '~/domain/auth'
 const Routes: React.FC<{}> = () => (
   <Switch>
     <PrivateRoute exact path='/'>
-      <TestPage />
+      <ThreadPage />
+    </PrivateRoute>
+    <PrivateRoute path='/messages'>
+      <ThreadPage />
     </PrivateRoute>
 
     <Route path='/login'>

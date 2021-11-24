@@ -45,3 +45,5 @@ export type { ImageDesc } from './creditCardFromType' // promote this?
 export { default as Bouncer} from './Bouncer'
 export { default as Strings} from './Strings'
 
+export { default as firstNWords } from './firstNWords' 
+

@@ -3,29 +3,30 @@ import reactModal from '@prezly/react-promise-modal'
 
 import {
   Button, 
-  Modal, 
-  ModalBody, 
-  ModalFooter,
-  ModalHeader
-} from 'reactstrap'
+  Dialog, 
+  DialogContent, 
+  DialogTitle,
+  DialogActions,
+  Paper
+} from '@material-ui/core'
 
-import type { Message } from 'domain/types/messages'
+import type { Message } from '@ipsum-labs/dash-types'
 
-import { useOfferMessagesService } from 'domain/offer/OfferMessagesService'
+import { useThreadService } from '~/domain/thread/ThreadService'
 
-import { MessagesView } from 'components'
-import firstNWords  from 'util/firstNWords'
+import { MessagesView } from '~/components'
+import firstNWords  from '~/util/firstNWords'
 
-import './offerMessagesCard.scss'
+import './threadCard.scss'
 
-const OfferMessagesCard: React.FC<{
+const ThreadCard: React.FC<{
   offerId: string
 }> = ({
   offerId
 }) => {
-  const messagesService = useOfferMessagesService()
+  const messagesService = useThreadService()
   return (
-    <div className='offer-messages-card card-outer'>
+    <Paper className='offer-messages-card card-outer'>
       <MessagesView 
         messagesSource={messagesService} 
         messagesKey={offerId}
@@ -33,7 +34,7 @@ const OfferMessagesCard: React.FC<{
         allowDelete 
         allowEdit 
         confirmDeleteFunction={deleteConfirmed}/>
-    </div>
+    </Paper>
   )
 }
 
@@ -43,19 +44,20 @@ const deleteConfirmed = async (message: Message) => (
     // (infered from the return type of reactModal, I think)
   await reactModal(({ show, onSubmit, onDismiss }) => (
    
-    <Modal isOpen={show} toggle={onDismiss} className='offer-messages-card-confirm-delete-modal-outer'>
-      <ModalHeader toggle={onDismiss}>Confirm Delete Message</ModalHeader>
-      <ModalBody>
+    <Dialog open={show} className='offer-messages-card-confirm-delete-modal-outer'>
+      <DialogTitle>Confirm Delete Message</DialogTitle>
+      <DialogContent>
         Delete message by <span className='author'>{message.author.firstName} {message.author.lastName}</span> that
         starts with <span className='content'><q>{firstNWords(message.content, 5)}</q></span>...?
-      </ModalBody>
+      </DialogContent>
     
-      <ModalFooter>
-        <Button outline color='secondary' onClick={onDismiss}>Cancel</Button>
+
+      <DialogActions>
+        <Button variant="outlined" color='secondary' onClick={onDismiss}>Cancel</Button>
         <Button color='primary' onClick={onSubmit}>Confirm</Button>
-      </ModalFooter>
-    </Modal>
+      </DialogActions>
+    </Dialog>
   ))
 )
 
-export default OfferMessagesCard
+export default ThreadCard

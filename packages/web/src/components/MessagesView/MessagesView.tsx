@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react'
-import { Form, Button } from 'reactstrap'
+import { Button } from '@material-ui/core'
 import Linkify from 'react-linkify'
 
-import type { Message, MessagesSource } from 'domain/types/messages' 
+import type { Message, MessagesSource } from '@ipsum-labs/dash-types' 
 
 import DateTimeFormat from './DateTimeFormat'
 import { ProfilePhoto } from '~/components'
@@ -113,7 +113,7 @@ const MessagesView : React.FC<{
         ))}
       </div>
       <div className="messages-card-input">
-        <Form onSubmit={handleSubmit} style={{position: 'relative'}}>
+        <form onSubmit={handleSubmit} style={{position: 'relative'}}>
           <textarea ref={inputRef} className={`messages-text-area ${(editingIndex >= 0) ? 'messages-text-area-editing' : ''}`}
             value={newMessageContent}
             onChange={onTextAreaChange}
@@ -141,7 +141,7 @@ const MessagesView : React.FC<{
               </Button>
             )}
           </div>
-        </Form>
+        </form>
       </div>
     </div>
   )

@@ -213,16 +213,16 @@ export const APIKEY = {
   to: '/apikeys',
 }
 
-export const PAYMENTS = { 
-  title: 'Payments', 
-  desc: 'View and filter your payments and refunds',
-  to: '/payments',
+export const MESSAGES = { 
+  title: 'Messages', 
+  desc: 'View your messages',
+  to: '/messages',
 }
 
 export default [
 //  OUR_SOLUTION,
 //  ABOUT_US,
-  PAYMENTS,
-  APIKEY,
+MESSAGES,
+  //APIKEY,
 //  DOCUMENTATION
 ] as NavElement[]

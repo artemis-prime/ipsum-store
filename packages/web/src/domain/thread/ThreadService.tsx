@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
-import type { Message, MessagesSource } from 'domain/types/messages'
-import type { Offer } from 'domain/types/offer'
 
-class ThreadMessagesService implements MessagesSource {
+import type { Thread, Message, MessagesSource } from '@ipsum-labs/dash-types'
+
+class ThreadService implements MessagesSource {
 
   _messagesMap: Map<string, Message[]> = new Map<string, Message[]>()
 
-  constructor(offers: Offer[]) {
+  constructor(offers: Thread[]) {
     offers.forEach((offer) => {
       this._messagesMap.set(offer.id, offer.messages)
     })
@@ -65,22 +65,14 @@ const getMessageIndex = (messages: Message[], message: Message) => (
   )
 )
 
-export const ThreadMessagesServiceContext = React.createContext<MessagesSource | undefined>(undefined)
+export const ThreadServiceContext = React.createContext<MessagesSource | undefined>(undefined)
 
-export const useThreadMessagesService = (): MessagesSource => {
-  const result = useContext(ThreadMessagesServiceContext) 
+export const useThreadService = (): MessagesSource => {
+  const result = useContext(ThreadServiceContext) 
   if(result === undefined) {
-    throw new Error('The useThreadMessagesService hook must be used within a ThreadMessagesServiceContext.Provider!')
+    throw new Error('The useThreadService hook must be used within a ThreadServiceContext.Provider!')
   }
   return result
 }
 
-export const withThreadMessagesService = (Component: React.ComponentType) => (
-  (props: any) => (
-    <ThreadMessagesServiceContext.Consumer>
-      {(service: MessagesSource | undefined) => (<Component {...props} threadMessagesService={service} />)}
-    </ThreadMessagesServiceContext.Consumer>
-  )
-)
-
-export default ThreadMessagesService
+export default ThreadService

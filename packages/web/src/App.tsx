@@ -29,8 +29,14 @@ import Routes, { isFullscreenRoute } from './Routes'
 import { AuthServiceProvider } from '~/domain/auth'
 import { TenantOrgStateProvider } from '~/domain/tenantOrg'
 
+import ThreadService, { ThreadServiceContext } from '~/domain/thread/ThreadService'
+
 import theme from './style/muiTheme'
 import './style/main.scss'
+
+import messages from '~/domain/thread/threadFixture'
+const threadService = new ThreadService(messages)
+
 
 import styles from './style/mainLayout.style.js'
 const useStyles = makeStyles(styles as any)
@@ -82,6 +88,7 @@ const App: React.FC<{}> = () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
     <AuthServiceProvider>
+    <ThreadServiceContext.Provider value={threadService} > 
     <Router>
       <TenantOrgStateProvider>
         <PageLayout>
@@ -89,6 +96,7 @@ const App: React.FC<{}> = () => (
         </PageLayout>
       </TenantOrgStateProvider>
     </Router>
+    </ThreadServiceContext.Provider>
     </AuthServiceProvider>
   </MuiThemeProvider>
 )
@@ -101,4 +109,3 @@ const routeClass = (path) => {
 }
 
 export default App
-
