@@ -1,5 +1,5 @@
 {
-  "name": "@ipsum-labs/dash-util",
+  "name": "@ipsum-labs/dash-types",
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",

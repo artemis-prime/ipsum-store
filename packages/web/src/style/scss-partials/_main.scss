@@ -1,0 +1,64 @@
+@use '../../style/scss-partials/muiThemeMap' as mui; 
+@use '../../style/scss-partials/util' as util; 
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+
+.main-section {
+
+  h2 {
+    margin-top: $spacing * 6;
+    font-size: 2rem;
+    color: map-get(mui.$map, 'palette-primary-main')
+  }
+  .subtitle {
+    font-size: 1.05rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    margin-top: 4px;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  .fa-icon {
+    padding-right: 8px;
+    box-sizing: content-box;
+    color: map-get(mui.$map, 'palette-primary-main');
+  }
+
+  .grid-outer {
+    margin-top: $spacing * 4;
+    margin-bottom: $spacing * 2;
+  }
+
+  &.paper {
+    background-color: map-get(mui.$map, 'palette-background-paper');
+  }
+
+}
+
+.main-section.dark {
+  background-color: map-get(mui.$map, 'ext-background-dark');
+  color: map-get(mui.$map, 'palette-text-secondary');
+  h2 {
+    color: inherit; 
+  }
+} 
+
+.link-arrow:before {
+  content: "›";
+  display: inline;
+  box-sizing: border-box;
+}
+
+.main-section.primary-as-background {
+  background-color: map-get(mui.$map, 'palette-primary-main');
+  color: map-get(mui.$map, 'palette-common-white');
+  h2 {
+    color: inherit !important;
+  }
+  button {
+    background-color: map-get(mui.$map, 'ext-background-dark');
+  }
+}

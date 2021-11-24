@@ -1,0 +1,20 @@
+@mixin icon-list-marker {
+  li::before {
+    content: "*";
+    //background-image: url('./images/list-marker-300.png');
+    //background-size: contain;
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    position: relative;
+    top: 0.1rem;
+    margin-right: 0.2rem;
+  }
+}
+
+@mixin easy-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

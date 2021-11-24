@@ -1,0 +1,16 @@
+@use '../../style/scss-partials/muiThemeMap' as mui; 
+@use '../../style/scss-partials/util' as util; 
+
+.features {
+
+  .split {
+    margin-bottom: 12px;
+  
+    .split-copy {
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

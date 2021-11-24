@@ -1,0 +1,74 @@
+@use './muiThemeMap' as mui; 
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+$width-mobile: map-get(mui.$map, 'breakpoints-sm') * 1px;
+$max-width-stage: map-get(mui.$map, 'ext-maxContainerWidth') * 1px;
+
+
+:root {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  font-size: 16px; 
+  line-height: 1.43;
+}
+
+  // https://www.codementor.io/@ricardozea/100-responsive-typography-system-using-a-modular-scale-s5rhft58g
+@media (min-width: $max-width-stage) {
+  :root {
+    font-size: calc(12px + .4vw);
+    line-height: calc(12px + 1.05vw);
+  }
+}
+
+h1 {
+  font-size: 1.912rem;
+  line-height: calc(1.912rem + 1.8vw); 
+}
+h2 {
+  font-size: 1.616rem;
+  line-height: calc(1.616rem + 1vw); 
+}
+h3 {
+  font-size: 1.471rem;
+  line-height: calc(1.471rem + .7vw); 
+}
+h4 { font-size: 1.3rem; }
+h5 { font-size: 1.243rem; }
+h6 { font-size: 1.132rem; }
+
+h4, h5, h6 { 
+  line-height: calc(1.1rem + .2vw); 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: calc(4px + 0.8vw) 0 calc(2px + 0.2vw) 0; /* Responsive margins */
+}
+
+h1 ~ p, h2 ~ p, h3 ~ p, h4 ~ p, h5 ~ p, h6 ~ p {
+  margin-top: 0;
+} 
+
+p, a {
+  font-size: 1rem;
+  line-height: inherit;
+  margin-bottom: 0.8rem;
+}
+
+a {
+  text-decoration: none;
+  color: map-get(mui.$map, 'palette-primary-light');
+  padding: 0px 3px;
+  &:hover {
+    text-decoration: underline;
+    color: inherit;
+  }
+}
+
+@media (max-width: $width-mobile) {
+  p, a {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,30 @@
+// https://www.carlrippon.com/creating-react-app-with-typescript-eslint-with-webpack5/
+
+{
+  "include": ["src", "types"],
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "jsx": "preserve",
+
+    "module": "esnext",
+    "target": "esnext",
+    "noImplicitAny": false,
+    "useUnknownInCatchVariables": false,
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./src/*"],
+      "~assets/*": ["./assets/*"],
+      "~scripts/*": ["./scripts/*"],
+    },  
+    "importsNotUsedAsValues": "error",
+  }
+}

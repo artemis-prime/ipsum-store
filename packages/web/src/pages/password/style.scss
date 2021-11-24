@@ -1,0 +1,31 @@
+@use '../../style/scss-partials/muiThemeMap' as mui; 
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+$sm-width: map-get(mui.$map, 'breakpoints-sm') * 1px;
+
+.form-outer {
+  &.request-password-form {
+
+    form {
+      align-items: center;
+      .MuiTextField-root {
+        min-width: 400px;
+        max-width: 600px;
+      }
+    }
+  }
+
+  .login-button-outer {
+    text-align: right;
+  }
+
+  .disclaimer {
+    font-size: 0.7rem;
+    a {
+      font-size: inherit;
+    }
+    margin-bottom: $spacing * 2;
+    @media (max-width: $sm-width) {
+      margin-bottom: $spacing * 1;
+    }
+  }
+}

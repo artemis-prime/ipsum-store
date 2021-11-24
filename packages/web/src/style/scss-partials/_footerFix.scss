@@ -1,0 +1,13 @@
+@use './muiThemeMap' as mui; 
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+$lgBp: map-get(mui.$map, 'breakpoints-lg') * 1px;
+
+.root-route footer,
+.on-route-pro footer {
+  padding: 0px $spacing * 3 !important;
+  
+  @media (min-width: $lgBp) {
+    padding: 0px $spacing * 8 !important;
+  }
+}

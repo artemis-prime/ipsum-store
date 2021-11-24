@@ -1,0 +1,217 @@
+@use './muiThemeMap' as mui; 
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+$sm-width: map-get(mui.$map, 'breakpoints-sm') * 1px;
+$stage-width: map-get(mui.$map, 'ext-maxContainerWidth') * 1px;
+$color-error: map-get(mui.$map, 'palette-error-main');
+
+.just-form-outer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 84px 0px;
+}
+
+.form-outer {
+  
+  .MuiPaper-root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  max-width: 900px;
+  min-width: 600px;
+  padding: 0px ($spacing * 2);
+
+  .MuiPaper-root {
+    width: 100%;
+    position: relative;
+  }
+
+  @media (max-width: $sm-width) {
+    max-width: initial;
+    min-width: initial;
+    width: 100%;
+  }
+  .form-title {
+    text-align: center;
+    margin-bottom: $spacing * 3;
+    margin-top: 0;
+    @media (max-width: $sm-width) {
+      margin-bottom: $spacing * 1;
+      text-align: left;
+    }
+  }
+
+  form button {
+    margin: $spacing * 2 0;  
+  }
+
+  .hidden-button {
+    visibility: hidden;
+  }
+
+  .back-and-forward-buttons {
+    width: 100%;
+    padding: 0 ($spacing * 2); 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &.last {
+      justify-content: flex-end;
+    }
+  }
+
+  &.on-success {
+    padding-top: $spacing * 6;
+    max-width: $stage-width;
+    min-width: initial;
+    width: 90%;
+    padding: 0;
+
+    p.confirm-body {
+      font-size: 1.1rem;
+    }
+
+    span.email,
+    span.org {
+      font-weight: bold;
+    }
+  }
+
+  .error-string {
+    text-align: center;
+    margin-bottom: ($spacing * 3);
+    color: $color-error;
+    font-weight: 500;
+  }
+
+  .prompt-string {
+    text-align: center;
+    margin-bottom: ($spacing * 3);
+  }
+
+  .MuiLinearProgress-root {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.form-root {
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+
+  .MuiTextField-root {
+    width: 300px;
+  }
+
+  .two-field-row {
+    display: flex;
+    flex-direction: row;
+    & > div {
+      flex-grow: 1;
+      &:first-child {
+        margin-right: 2 * $spacing;
+      }
+    }
+    @media (max-width: $sm-width) {
+      flex-direction: column;
+      & > div {
+        &:first-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  button.form-button {
+
+    max-width: 300px;
+    min-width: 160px;
+    display: block;
+    align-self: flex-end;
+    //margin: 2 * $spacing 0;
+
+    @media (max-width: $sm-width) {
+      max-width: initial;
+      width: 100%;
+    }
+
+    &.MuiPhoneNumber-flagButton {
+      min-width: 30px; // cf: third-party style
+      background-color:  map-get(mui.$map, 'palette-background-paper');
+      //display: inline;
+      & > .MuiButton-label {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.form-alternative-prompt  {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-bottom: $spacing;
+  font-size: 0.7rem;
+
+  @media (max-width: $sm-width) {
+    line-height: 1.5rem;
+  }
+
+  span.prompt {
+    display: block;
+  }
+
+  a {
+    display: block;
+    font-size: 0.8rem;
+    @media (max-width: $sm-width) {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.signup-outer, .login-outer {
+  height: 1.2rem;
+  span.prompt, a {
+    line-height: 1.2rem;
+  }
+  .prompt {
+    padding-top: 1px;
+    margin-right: 5px;
+  }
+}
+
+select.MuiSelect-root > option {
+  min-height: 0;
+}
+
+.MuiFormControlLabel-root .MuiRadio-root .MuiSvgIcon-root {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.MuiTextField-root.row-text-field-theme-touchups {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  label {
+    margin-right: $spacing;
+  }
+}

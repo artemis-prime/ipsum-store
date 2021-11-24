@@ -1,0 +1,26 @@
+@use '../../style/scss-partials/muiThemeMap' as mui; 
+
+$text-color: map-get(mui.$map, 'palette-text-primary');
+$hover-color: map-get(mui.$map, 'palette-primary-main'); 
+
+.tenant-org-selector-outer {
+ 
+  .MuiButton-text {
+    padding-bottom: 2.0px; // match the link buttons (plus 1px bellow)
+    padding-left: 4px;
+    padding-right: 4px;
+    min-width: 0px;
+
+    &.popover-open {
+      .MuiButton-label {
+        border-bottom: 1.5px $hover-color solid; // match the link buttons
+      }
+    } 
+
+    .MuiButton-label {
+      border-bottom: 1.5px $text-color solid; // match the link buttons
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+  }
+}

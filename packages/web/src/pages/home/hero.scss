@@ -1,0 +1,39 @@
+@use '../../style/scss-partials/muiThemeMap' as mui; 
+@use '../../style/scss-partials/util' as util; 
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+
+.hero {
+
+  padding-top: $spacing * 4;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  * > div {
+    flex-grow: 1
+  }
+
+  .left {
+    padding-left: $spacing * 6;
+
+    ul {
+      // @include util.icon-list-marker;
+      list-style: inside disc;
+      li {
+        padding-left: $spacing;
+        font-size: 1.3rem;
+
+      }
+    }
+  
+    button {
+      margin: 42px 0px;
+    }
+  }
+
+  .right {
+    @include util.easy-center;
+  }
+}

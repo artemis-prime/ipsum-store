@@ -1,0 +1,50 @@
+@use '../../style/scss-partials/muiThemeMap' as mui; 
+@use '../../style/scss-partials/util' as util; 
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+
+
+.case-study {
+  padding: $spacing * 6 0px;
+
+  .section-title {
+    color: map-get(mui.$map, 'palette-text-primary'); 
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .section-link {
+    font-size: 0.8rem;
+    display: block;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 6 * $spacing;
+  }
+
+  .case-title {
+    color: map-get(mui.$map, 'palette-text-primary'); 
+  }
+
+  .three {
+    margin-top: $spacing * 4;
+  }
+
+  .case-study-outer {
+    padding-right: $spacing * 2;
+
+    .title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      margin-bottom: 0;
+    }
+
+    .link {
+      font-size: 0.8rem;
+      line-height: 1.1;
+    }
+  }
+
+}

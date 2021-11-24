@@ -1,0 +1,75 @@
+/**
+
+  This file is meant to centralize the implementation of the horizantal padding in 
+  Containers (header, main, and footer) at various breakpoints.  MUI as well as its
+  styling mechanism has some
+  inconsistencies and bugs that made this problematic and awkward in other ways.
+  Also, have this in three places was not necessarily.
+
+  Functionality: 
+    header, main, footer: 
+      Large widths: max-width of theme.ext.maxContainerWidth, no gutters since that doesn't make sense
+      At theme.ext.maxContainerWidth, gutters are spacing(3)
+      At xs, gutters are spacing(2)
+
+*/
+@use './muiThemeMap' as mui; 
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+$stage-width: map-get(mui.$map, 'ext-maxContainerWidth') * 1px;
+$sm-width: map-get(mui.$map, 'breakpoints-sm') * 1px;
+
+$padding-factor-mobile: 2;
+$padding-factor-general: 3;
+
+  // Having a scope helps override the Mui defaults (that have bugs we couldn't work around)
+.sass-root {
+
+  header, footer, .main-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .header-inner, .footer-inner, .main-section-inner {
+    width: 100%;
+  }
+
+    // There is a bug in the 'disableGutters' implementation for Container.
+  @media (min-width: $stage-width) {
+    .main-section-inner, .footer-inner, .header-inner {
+      padding-left: 0;
+      padding-right: 0;
+      width: $stage-width;
+    }
+  }
+  
+  @media (min-width: $sm-width) and (max-width: $stage-width) {
+    .main-section-inner, .footer-inner, .header-inner {
+      padding-left: $padding-factor-general * $spacing;
+      padding-right: $padding-factor-general * $spacing;
+    }
+  }
+  
+  @media (max-width: $sm-width) {
+    .main-section-inner, .footer-inner, .header-inner {
+      padding-left: $padding-factor-mobile * $spacing;
+      padding-right: $padding-factor-mobile * $spacing;
+    }
+  }
+
+  .fullScreenContainer > .main-section-inner {
+    max-width: none !important;
+    margin-top: 0;
+    padding: 0 !important;
+  }
+
+  @media (min-width: $stage-width) {
+    header.fullScreenContainer, footer.fullScreenContainer  {
+      max-width: none !important;
+      padding-left: 8 * $spacing;
+      padding-right: 8 * $spacing;
+    }
+  }
+}

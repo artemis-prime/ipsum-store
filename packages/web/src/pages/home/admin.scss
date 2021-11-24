@@ -1,0 +1,21 @@
+@use '../../style/scss-partials/muiThemeMap' as mui; 
+@use '../../style/scss-partials/util' as util; 
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+
+
+.admin {
+  padding: $spacing * 6 0px;
+
+  h6 {
+    margin-top: $spacing;
+  }
+
+  .subtitle.left {
+    margin-bottom: $spacing * 3;
+  }
+
+  .grid-cell-left {
+    padding-right: $spacing * 3;
+  }
+}

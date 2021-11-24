@@ -1,0 +1,81 @@
+@use './muiThemeMap' as mui; 
+@use 'sass:color';
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+$color-text-footer: color.adjust( map-get(mui.$map, 'palette-text-secondary'), $alpha: -0.2);
+$footer-font-size: 0.8rem;
+
+footer {
+
+  font-size: $footer-font-size;
+  background-color: map-get(mui.$map, 'palette-secondary-dark');
+  color: $color-text-footer;
+
+  
+  p {
+    font-size: inherit;
+    color: inherit;
+    margin: $spacing 0;
+    font-weight: 400;
+    line-height: 1.43;
+  }
+
+  a {
+    font-size: inherit;
+    color: inherit;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none !important;
+      color: map-get(mui.$map, 'palette-primary-light');
+    }
+  }
+
+  .fine-print {
+
+    font-size: 0.7rem;
+    color: inherit;
+
+  }
+
+  .footer-nav {
+
+    h6 {
+      font-size: inherit;
+      color: inherit;
+      font-size: 1.3rem;
+      font-weight: 300;
+      margin: 0;
+    }
+  
+    ul, li {
+      display: block;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      line-height: inherit;
+    }
+  
+    hr {
+      width: 90%;
+      display: block;
+      border-color: map-get(mui.$map, 'palette-divider');
+      border-width: 0 0 1px 0;
+      margin: ($spacing * 2) 0;
+    }
+  
+    a {
+      font-size: $footer-font-size;
+      font-weight: 400;
+      line-height: 2;
+  
+      text-decoration: none;
+      color: inherit;
+
+      padding: 0px 3px;
+      &:hover {
+        text-decoration: none;
+        color: map-get(mui.$map, 'palette-primary-main');
+      }
+    }
+  }
+}

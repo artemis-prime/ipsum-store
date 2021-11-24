@@ -1,0 +1,43 @@
+@use '../../style/scss-partials/muiThemeMap' as mui; 
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+$sm-width: map-get(mui.$map, 'breakpoints-sm') * 1px;
+
+.on-route-signup .form-outer {
+
+  
+  margin-top: $spacing(6);
+  
+  .disclaimer {
+    font-size: 0.7rem;
+    a {
+      font-size: inherit;
+    }
+    margin-bottom: $spacing * 2;
+    @media (max-width: $sm-width) {
+      margin-bottom: $spacing * 1;
+    }
+  }
+  .form-title {
+    margin-bottom: 18px;
+  }
+  .form-title-byline {
+    text-align: center;
+    margin-bottom: $spacing * 3;
+  }
+
+  .form-root .account-type-outer {
+    width: 300px;
+    margin-bottom: $spacing * 3;
+
+    legend {
+      text-align: center;
+      font-weight: 300 !important;
+    }
+
+    .MuiFormGroup-root {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}

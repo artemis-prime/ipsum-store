@@ -1,0 +1,25 @@
+@use '../../style/scss-partials/muiThemeMap' as mui; 
+@use '../../style/scss-partials/util' as util; 
+
+$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
+
+.cta {
+  padding: $spacing * 6 0px;
+
+
+  .main-section-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section-title {
+    margin-bottom: $spacing * 4;
+  }
+
+  button {
+    margin-bottom: $spacing * 4;
+  }
+
+}
