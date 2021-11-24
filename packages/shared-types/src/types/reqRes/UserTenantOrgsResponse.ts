@@ -3,6 +3,6 @@ import type TenantOrgRef from '../TenantOrgRef'
 
 export default interface UserTenantOrgsResponse {
   ipsumUser: IpsumUser | undefined
-  tenantOrgRef: TenantOrgRef[]
+  tenantOrgs: TenantOrgRef[]
   message?: string 
 }

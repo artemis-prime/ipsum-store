@@ -31,7 +31,5 @@ if (process.env.FIREBASE_USE_EMULATOR === 'true') {
   auth.useEmulator('http://localhost:9099')
 }
 
-export const requestPasswordUpdate = firebase.functions().httpsCallable('requestPasswordUpdate')
-export const updatePassword = firebase.functions().httpsCallable('updatePassword')
 export  { auth, firestore }
 export default app

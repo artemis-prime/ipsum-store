@@ -70,7 +70,7 @@ const RequestPasswordUpdateForm: React.FC<{}> = ({
     {success ? (
       <Paper>
         <h2 className='form-title'>Check your email</h2>
-        <p className='prompt-string'>A password update email was sent to the address you requested.<br/>Please follow the link provided to reset your password.</p>
+        <p className='prompt-string'>If the email corresponds to an account with us, a reset link was sent to the address you requested.<br/>Please follow the link to reset your password.</p>
       </Paper>
     ) : (
       <Paper>

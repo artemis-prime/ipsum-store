@@ -1,4 +1,4 @@
-import type Message from './Message'
+import type { Message } from '@ipsum-labs/dash-types'
 
 // 'key' is any unique id, for example offer.id. 
 // "Get me the messages associated with X".

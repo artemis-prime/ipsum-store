@@ -24,7 +24,6 @@ import { COLLECTIONS } from '@ipsum-labs/dash-types'
 import { errorToString } from '@ipsum-labs/dash-util'
 
 import { 
-  requestPasswordUpdate as requestPasswordUpdate_remote,
   auth as firebaseAuth,
   firestore
 } from '~/service/firebase'
@@ -139,7 +138,7 @@ class AuthServiceImpl implements AuthService  {
         adminOrgsSnap.forEach((doc) => {
           const org = doc.data() as TenantOrg 
           orgRefs.push({
-            tenantId: org.name,
+            tenantId: org.tenantId,
             fullOrgName: org.details.fullOrgName,
             isAdmin: true
           })
@@ -154,7 +153,7 @@ class AuthServiceImpl implements AuthService  {
         memberOrgsSnap.forEach((doc) => {
           const org = doc.data() as TenantOrg 
           orgRefs.push({
-            tenantId: org.name,
+            tenantId: org.tenantId,
             fullOrgName: org.details.fullOrgName,
             isAdmin: false
           })
@@ -237,20 +236,17 @@ class AuthServiceImpl implements AuthService  {
         }
 
         const tenantOrg: TenantOrg = {
-          name: params.name,
-          vendor: 'none',
+          tenantId: params.name,
           adminEmail: params.adminEmail,
           users: [], 
-          testOnly: true,
           details: params.details,
-          apiKeyTest: `T_${generateUniqueId()}`,
           created: new Date(),
           updated: new Date(),
         }
 
         await firestore
           .collection(COLLECTIONS.TENANT_ORGS)
-          .doc(tenantOrg.name)  
+          .doc(tenantOrg.tenantId)  
           .set(tenantOrg)
     
         resolve({
@@ -329,10 +325,12 @@ class AuthServiceImpl implements AuthService  {
 
     return new Promise<StatusResponse>((resolve, reject) => {
       this._setQueryLoading(true)
-      requestPasswordUpdate_remote({ email, ext: EXT })
-        .then(({data}) => {
-          const status = data as string
-          resolve({ status })
+      firebaseAuth.sendPasswordResetEmail(email, {
+        url: 'http://localhost:8080/updatePassword',
+        handleCodeInApp: true
+      })
+        .then(() => {
+          resolve({ status: 'Password reset email sent' })
         })
         .catch((error) => {
           reject(errorToString(error))
@@ -375,7 +373,7 @@ class AuthServiceImpl implements AuthService  {
         adminOrgsSnap.forEach((doc) => {
           const org = doc.data() as TenantOrg 
           user.orgs!.push({
-            tenantId: org.name,
+            tenantId: org.tenantId,
             fullOrgName: org.details.fullOrgName,
             isAdmin: true
           })
@@ -388,7 +386,7 @@ class AuthServiceImpl implements AuthService  {
         memberOrgsSnap.forEach((doc) => {
           const org = doc.data() as TenantOrg 
           user.orgs!.push({
-            tenantId: org.name,
+            tenantId: org.tenantId,
             fullOrgName: org.details.fullOrgName,
             isAdmin: false
           })
@@ -455,53 +453,12 @@ class AuthServiceImpl implements AuthService  {
   }
  
   public isLoading(): boolean {return (this.authQueryLoading || this.authStateLoading)}
- /*
-  useEffect(() => {
-    let userUnsubscribe: (() => void) | undefined = undefined
-    const unsubscribe = firebaseAuth.onAuthStateChanged( async(fbUser: firebase.User | null) => {
-
-      if (!fbUser) {
-        console.log('SOMEOME LOGGED OUT')
-          // clear the ipsumUser info
-        ipsumUserRef.current = undefined
-      }
-      else {
-        setLoading(true)
-        let ipsumUser = getCurrentIpsumUser()
-        if (!ipsumUser || ipsumUser.uid !== fbUser.uid) {
-          ipsumUser = await refreshIpsumUser()
-        }
-        
-
-          // An undefined result means a new user has been created in the system
-          // but the IpsumUser hasn't yet. This can't be avoided.
-          // We must call createNewUserFromEmailAndPassword() before creating the 
-          // corresponding IpsumUser, since we need to know the uid to assign.
-        if (!ipsumUser) {
-          userUnsubscribe = await firestore
-            .collection(COLLECTIONS.IPSUM_USERS)
-            .doc(fbUser.uid)
-            .onSnapshot( async (doc) => {
-              if (doc.exists) {
-                let ipsumUser = doc.data() as IpsumUser
-                ipsumUser = await getIpsumUserTransientData(ipsumUser)
-                ipsumUserRef.current = ipsumUser
-              }
-            })
-        }
-        setLoading(false)
-      }
-    })
-    return () => {unsubscribe(); (userUnsubscribe && userUnsubscribe())} // return cleanup function
-  }, [])
- */
+  public isPaymintoAdmin(): boolean {
+    return !!this.currentFirebaseUser && adminBouncer.in(this.currentFirebaseUser!.email!)
+  }
 
   public disposer(): void {
     this.disposers.forEach((d) => {d()})
-  }
-
-  public isPaymintoAdmin(): boolean {
-    return !!this.currentFirebaseUser && adminBouncer.in(this.currentFirebaseUser!.email!)
   }
 }
  

@@ -34,7 +34,7 @@ class TenantOrgStateImpl implements TenantOrgState {
         if (name) {
           try {
             this.tenantOrgLoading = true
-            this.tenantOrg = await this.fetchTenantOrg(name)  
+            this.tenantOrg = await this._fetchTenantOrg(name)  
           }
           catch (e) {
             this.tenantOrgErrorString = errorToString(e)
@@ -55,7 +55,7 @@ class TenantOrgStateImpl implements TenantOrgState {
     this.tenantOrgName = n
   }
 
-  private async fetchTenantOrg(name: string): Promise<TenantOrg> {
+  private async _fetchTenantOrg(name: string): Promise<TenantOrg> {
 
     return new Promise<TenantOrg>(async (resolve, reject) => {
       try {

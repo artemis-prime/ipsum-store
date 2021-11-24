@@ -6,8 +6,8 @@ import type {
   CreateUserParams,
   IpsumUser,
   StatusResponse,
-  TenantOrgParams
-  UserTenantOrgsResponse,
+  TenantOrgParams,
+  UserTenantOrgsResponse
 } from '@ipsum-labs/dash-types'
 
 interface AuthService {
