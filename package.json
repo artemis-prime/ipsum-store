@@ -21,7 +21,8 @@
   },
 
   "workspaces": [
-    "packages/web",
+    "packages/web-app",
+    "packages/wfw",
     "packages/shared-types",
     "packages/shared-util"
   ],

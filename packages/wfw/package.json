@@ -1,0 +1,16 @@
+{
+  "name": "@artemis-prime/wfw",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "yarn build",
+    "clean": "rm -rf ./node_modules && rm -rf ./dist"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "artemis-prime",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "firebase": "9.3.0"
+  }
+}

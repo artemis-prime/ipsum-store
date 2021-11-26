@@ -1,0 +1,23 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "target": "es6",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "outDir": "dist",
+    "jsx": "react",
+    "skipLibCheck": true,
+    "typeRoots" : ["../../node_modules/@types", "types"],
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "importsNotUsedAsValues": "error",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+}
