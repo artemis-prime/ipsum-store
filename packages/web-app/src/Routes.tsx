@@ -8,7 +8,6 @@ import {
   RequestPasswordResetPage,
 } from '@artemis-prime/wfw/pages'
 
-
 import {
   SignupPage,
   ThreadPage,
@@ -16,36 +15,40 @@ import {
 
 import { useAuthService } from '~/domain/auth'
 
-const Routes: React.FC<{}> = () => (
-  <Switch>
-    <PrivateRoute exact path='/'>
-      <ThreadPage />
-    </PrivateRoute>
-    <PrivateRoute path='/messages'>
-      <ThreadPage />
-    </PrivateRoute>
+const Routes: React.FC<{}> = () => {
+ 
+  const auth = useAuthService()
+  
+  return (
+    <Switch>
+      <PrivateRoute exact path='/'>
+        <ThreadPage />
+      </PrivateRoute>
+      <PrivateRoute path='/messages'>
+        <ThreadPage />
+      </PrivateRoute>
 
-    <Route path='/login'>
-      <LoginPage />
-    </Route>
-    <Route path='/signup'>
-      <SignupPage />
-    </Route>
-    <Route path='/requestPasswordReset'>
-      <RequestPasswordResetPage />
-    </Route>
-    <Route path='/resetPassword'>
-      <ResetPasswordPage />
-    </Route>
-  </Switch>
-)
-
+      <Route path='/login'>
+        <LoginPage auth={auth} />
+      </Route>
+      <Route path='/signup'>
+        <SignupPage />
+      </Route>
+      <Route path='/requestPasswordReset'>
+        <RequestPasswordResetPage auth={auth} />
+      </Route>
+      <Route path='/resetPassword'>
+        <ResetPasswordPage auth={auth} />
+      </Route>
+    </Switch>
+  )
+}
 const PrivateRoute: React.FC<any> = observer(({ children, ...rest }) => {
 
   const auth = useAuthService()
   return (
     <Route {...rest}>
-      {(!!auth.currentFirebaseUser) ? children : <LoginPage/>} 
+      {(!!auth.currentAuthUser) ? children : <LoginPage auth={auth} />} 
     </Route>
   )
 })

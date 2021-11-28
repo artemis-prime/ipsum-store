@@ -15,11 +15,10 @@ import {
 } from 'formik'
 import { TextField } from 'formik-material-ui'
 
-import type { Credentials } from '../../types/auth'
+import type { CoreAuthService, Credentials } from '../../types/auth'
 import { isValidEmail, errorToString } from '../../util'
 
 import { Link } from '../../components'
-import type { CoreAuthService } from '../../types/auth'
 
 const initialValues: Credentials = { 
   email: '',

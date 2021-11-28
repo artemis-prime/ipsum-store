@@ -18,14 +18,12 @@ import type {
 } from '@ipsum-labs/dash-types'
  
 import { COLLECTIONS } from '@ipsum-labs/dash-types'
-import { errorToString } from '@ipsum-labs/dash-util'
+import { errorToString, Bouncer } from '@artemis-prime/wfw/util'
 
 import { 
   auth as firebaseAuth,
   firestore
 } from '~/service/firebase'
-
-import { Bouncer } from '@artemis-prime/wfw/util'
 
 import type AuthService from './AuthService'
  
@@ -40,15 +38,15 @@ import type AuthService from './AuthService'
  
 class AuthServiceImpl implements AuthService  {
  
-  currentFirebaseUser: firebase.User | undefined = undefined
+  currentAuthUser: firebase.User | undefined = undefined
   currentIpsumUser: IpsumUser | undefined = undefined
   authStateLoading: boolean = false   // firebaseUser status is loading
-  authQueryLoading: boolean = false      // any other query: currentIpsumUser, tenantOrgs, etc
+  authQueryLoading: boolean = false   // any other query: currentIpsumUser, tenantOrgs, etc
   disposers: (() => void)[] = []
 
   constructor() {
     makeObservable(this, {
-      currentFirebaseUser: observable,
+      currentAuthUser: observable,
       currentIpsumUser: observable,
       authStateLoading: observable,
       authQueryLoading: observable,
@@ -57,11 +55,11 @@ class AuthServiceImpl implements AuthService  {
       // https://mobx.js.org/observable-state.html#limitations
     makeObservable<AuthServiceImpl, 
       '_setQueryLoading' | 
-      '_setCurrentFirebaseUser' | 
+      '_setCurrentAuthUser' | 
       '_setCurrentIpsumUser'
     >(this, {
       _setQueryLoading: action,
-      _setCurrentFirebaseUser: action,
+      _setCurrentAuthUser: action,
       _setCurrentIpsumUser: action
     })
 
@@ -70,11 +68,11 @@ class AuthServiceImpl implements AuthService  {
 
         if (!fbUser) {
           console.log('LOGGED OUT')
-          this._setCurrentFirebaseUser(undefined)
+          this._setCurrentAuthUser(undefined)
           this._setCurrentIpsumUser(undefined)
         }
         else {
-          this._setCurrentFirebaseUser(fbUser)
+          this._setCurrentAuthUser(fbUser)
           this._setQueryLoading(true)
           if (!this.currentIpsumUser || this.currentIpsumUser.uid !== fbUser.uid) {
             await this._refreshIpsumUser()
@@ -103,8 +101,8 @@ class AuthServiceImpl implements AuthService  {
     ))
   }
 
-  private _setCurrentFirebaseUser(u: firebase.User | undefined): void {
-    this.currentFirebaseUser = u
+  private _setCurrentAuthUser(u: firebase.User | undefined): void {
+    this.currentAuthUser = u
   }
 
   private _setCurrentIpsumUser(u: IpsumUser | undefined): void {
@@ -403,12 +401,12 @@ class AuthServiceImpl implements AuthService  {
   private _refreshIpsumUser(): Promise<void> {
     return new Promise<void>( async(resolve, reject) => {
       try {
-        if ( !this.currentFirebaseUser ) {
+        if ( !this.currentAuthUser ) {
           reject('No logged in user')  
           return
         }
         this._setQueryLoading(true)
-        this._setCurrentIpsumUser(await this._fetchIpsumUser(this.currentFirebaseUser.uid))
+        this._setCurrentIpsumUser(await this._fetchIpsumUser(this.currentAuthUser.uid))
         if (!this.currentIpsumUser) {
           reject('No IpsumUser corresponding to logged in user found.')
           this._setQueryLoading(false)
@@ -451,7 +449,7 @@ class AuthServiceImpl implements AuthService  {
  
   public isLoading(): boolean {return (this.authQueryLoading || this.authStateLoading)}
   public isPaymintoAdmin(): boolean {
-    return !!this.currentFirebaseUser && adminBouncer.in(this.currentFirebaseUser!.email!)
+    return !!this.currentAuthUser && adminBouncer.in(this.currentAuthUser!.email!)
   }
 
   public disposer(): void {
