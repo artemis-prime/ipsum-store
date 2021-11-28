@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default (props) => (<>
+const TypographyTest: React.FC<{}> = () => (<>
 
 <h2>This is 2nd level heading</h2>
 <h3>This is 3rd level heading</h3>
@@ -31,7 +31,9 @@ page does not use HTML markup very normally anyway.</p></blockquote>
 <p>The following contains address information about the author, in an <code>address</code>
 element.</p>
 <address>
-<a href="./" lang="en" hreflang="en">Artem Ash</a>,
+<a href="./" lang="en" hrefLang="en">Artem Ash</a>,
 </address> 
 
 </>)
+
+export default TypographyTest

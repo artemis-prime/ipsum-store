@@ -4,25 +4,28 @@ import cx from 'classnames'
 
 import { makeStyles } from '@material-ui/core'
 
-import { useAuthService } from '~/domain/auth'
-
-import { 
-  AppBarShell,
-  //BurgerMenuButton,
-  MenuButtons,
-  IpsumLogo,
-} from '~/components'
-
 import type { 
   NavElement,
   BoundingRect, 
   ChangeHandler, 
   SimpleHandler, 
-} from '~/types/app'
+} from '@artemis-prime/wfw/types'
 
+import { AppBarShell, MenuButtons } from '@artemis-prime/wfw/components'
+import { useIsMobile } from '@artemis-prime/wfw/util'
+
+
+import { 
+  //AppBarShell,
+  //BurgerMenuButton,
+  //MenuButtons,
+  IpsumLogo,
+} from '~/components'
+
+
+import { useAuthService } from '~/domain/auth'
 import TenantOrgSelector from './TenantOrgSelector'
 
-import { useIsMobile } from '~/util'
 import MAIN_MENU from '~/settings/app/mainNav'
 import { 
   COMMON as RIGHT_COMMON, 

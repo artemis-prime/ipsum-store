@@ -10,12 +10,11 @@ import {
   Paper
 } from '@material-ui/core'
 
+import { firstNWords } from '@artemis-prime/wfw/util'
 import type { Message } from '@ipsum-labs/dash-types'
 
 import { useThreadService } from '~/domain/thread/ThreadService'
-
 import { MessagesView } from '~/components'
-import firstNWords  from '~/util/firstNWords'
 
 import './threadCard.scss'
 

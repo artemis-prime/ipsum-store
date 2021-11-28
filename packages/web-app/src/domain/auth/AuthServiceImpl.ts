@@ -2,13 +2,10 @@ import {
   action,
   makeObservable, 
   observable, 
-  reaction, 
 } from 'mobx'
-
 
 import type firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
-import generateUniqueId from 'generate-unique-id'
  
 import type {
   TenantOrg,
@@ -28,7 +25,7 @@ import {
   firestore
 } from '~/service/firebase'
 
-import { Bouncer } from '~/util'
+import { Bouncer } from '@artemis-prime/wfw/util'
 
 import type AuthService from './AuthService'
  
@@ -326,7 +323,7 @@ class AuthServiceImpl implements AuthService  {
     return new Promise<StatusResponse>((resolve, reject) => {
       this._setQueryLoading(true)
       firebaseAuth.sendPasswordResetEmail(email, {
-        url: 'http://localhost:8080/updatePassword',
+        url: 'http://localhost:8080/resetPassword',
         handleCodeInApp: true
       })
         .then(() => {

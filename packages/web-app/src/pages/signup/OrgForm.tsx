@@ -8,7 +8,7 @@ import {
 
 import { TextField } from 'formik-material-ui'
 
-import { isValidEmail } from '@ipsum-labs/dash-util'
+import { isValidEmail } from '@artemis-prime/wfw/util'
 
 import type WizardStopProps from './WizardStopProps'
 import BackAndForwardButtons from './BackAndForwardButtons'

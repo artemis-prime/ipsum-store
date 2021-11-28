@@ -4,13 +4,10 @@ import cx from 'classnames'
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 
-import { useTenantOrgState } from '~/domain/tenantOrg'
-import type { NavElement } from '~/types/app'
-import { 
-  ButtonMenu,
-  NavElementMenu 
-} from '~/components'
+import type { NavElement } from '@artemis-prime/wfw/types'
+import { ButtonMenu, NavElementMenu } from '@artemis-prime/wfw/components'
 
+import { useTenantOrgState } from '~/domain/tenantOrg'
 import { useAuthService } from '~/domain/auth'
 
 import './tenantOrgSelector.scss'

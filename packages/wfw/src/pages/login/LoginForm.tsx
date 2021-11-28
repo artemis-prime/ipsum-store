@@ -114,7 +114,7 @@ const LoginForm: React.FC<{
                 Log In
               </Button>
               <div className='form-alternative-prompt forgot-password-outer'>
-                <Link to="/requestPasswordUpdate">Forgot Password?</Link>
+                <Link to="/requestPasswordReset">Forgot Password?</Link>
               </div>
               <div className='form-alternative-prompt signup-outer'>
                 <span className='prompt'>Don't have an account?</span>

@@ -1,15 +1,16 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import {
-  Route, 
-  Switch, 
-} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import {
-  CompletePasswordUpdatePage,
+  ResetPasswordPage,
   LoginPage,
+  RequestPasswordResetPage,
+} from '@artemis-prime/wfw/pages'
+
+
+import {
   SignupPage,
-  RequestPasswordUpdatePage,
   ThreadPage,
 } from './pages'
 
@@ -30,11 +31,11 @@ const Routes: React.FC<{}> = () => (
     <Route path='/signup'>
       <SignupPage />
     </Route>
-    <Route path='/requestPasswordUpdate'>
-      <RequestPasswordUpdatePage />
+    <Route path='/requestPasswordReset'>
+      <RequestPasswordResetPage />
     </Route>
-    <Route path='/updatePassword'>
-      <CompletePasswordUpdatePage />
+    <Route path='/resetPassword'>
+      <ResetPasswordPage />
     </Route>
   </Switch>
 )

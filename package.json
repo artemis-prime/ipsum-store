@@ -19,7 +19,6 @@
     "clean:web": "yarn workspace @ipsum-labs/dash-web clean",
     "clean:all": "yarn clean:common && yarn clean:types && yarn clean:util && yarn clean:web"
   },
-
   "workspaces": [
     "packages/web-app",
     "packages/wfw",
@@ -35,6 +34,6 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-typescript-prettier": "^4.2.0",
     "eslint-config-prettier": "^8.3.0",
-    "typescript": "^4.4.3"
+    "typescript": "^4.5.2"
   }
 }

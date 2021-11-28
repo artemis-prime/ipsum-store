@@ -2,10 +2,13 @@ import React, { useState, useRef } from 'react'
 import { Button } from '@material-ui/core'
 import Linkify from 'react-linkify'
 
-import type { Message, MessagesSource } from '@ipsum-labs/dash-types' 
+
+import { ProfilePhoto } from '@artemis-prime/wfw/components'
+
+import type { Message } from '@ipsum-labs/dash-types' 
 
 import DateTimeFormat from './DateTimeFormat'
-import { ProfilePhoto } from '~/components'
+import type { MessagesSource } from '~/domain/thread'
 
 import './messagesView.scss'
 

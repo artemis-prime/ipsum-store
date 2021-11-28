@@ -12,7 +12,8 @@ import {
 import type { CreateUserParams } from '@ipsum-labs/dash-types'
 import { errorToString } from '@ipsum-labs/dash-util'
 
-import { Link } from '~/components'
+import { Link } from '@artemis-prime/wfw/components'
+
 import { useAuthService } from '~/domain/auth'
 import _str from '~/settings/strings'
 

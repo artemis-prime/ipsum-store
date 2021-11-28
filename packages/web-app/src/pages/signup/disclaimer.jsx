@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Link } from '~/components'
+import { Link } from '@artemis-prime/wfw/components'
 import { APP_NAME } from '~/settings/strings'
 
 import { TERMS_AND_CONDITIONS_ROUTE } from '~/Routes'

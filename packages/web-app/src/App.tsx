@@ -10,17 +10,15 @@ import {
   MuiThemeProvider 
 } from '@material-ui/core'
 
-// import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
-
 import type {
   BoundingRect, 
   ChangeHandler, 
   NavElement 
-} from '~/types/app'
+} from '@artemis-prime/wfw/types'
 
 import {
   AppBar, 
-  Footer, 
+  //Footer, 
   //MegaMenuView, 
   //MobileMegaMenu 
 } from '~/components'
@@ -79,10 +77,12 @@ const PageLayout: React.FC<{}> = ({ children }) => {
       <Container component='main' className={s.main}>
         {children}
       </Container>
-      <Footer className={s.footer} />
     </div>
   )
 }
+
+//       <Footer className={s.footer} />
+
 
 const App: React.FC<{}> = () => (
   <MuiThemeProvider theme={theme}>

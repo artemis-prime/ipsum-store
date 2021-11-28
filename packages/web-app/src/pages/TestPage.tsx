@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 
-import TypographyTest from '~/util/TypographyTest'
+import { TypographyTest } from '@artemis-prime/wfw/util'
 
 const TestPage: React.FC<{}> = () => {
   const location = useLocation()

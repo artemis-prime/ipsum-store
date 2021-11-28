@@ -86,8 +86,8 @@ export {
 export { default as FieldRenderer } from './FieldRenderer'
 export type { FieldRenderDescriptor, RenderedFieldProps } from './FieldRenderer'
 
-export { default as creditCardImageUrlFromType, renderDefaultCCImage } from './ccImageFromType'
-export type { ImageDesc } from './ccImageFromType' // promote this?
+//export { default as creditCardImageUrlFromType, renderDefaultCCImage } from './ccImageFromType'
+//export type { ImageDesc } from './ccImageFromType' // promote this?
 
 export { default as Bouncer} from './Bouncer'
 export { default as Strings} from './Strings'

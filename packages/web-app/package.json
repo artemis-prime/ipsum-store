@@ -9,12 +9,13 @@
     "theme-to-sass": "node --harmony --trace-warnings scripts/theme-to-sass/export.mjs src/style/rawMuiTheme.mjs src/style/scss-partials/_muiThemeMap.scss"
   },
   "dependencies": {
+    "@artemis-prime/wfw": "1.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
-    "@ipsum-labs/dash-types": "file:../shared-types",
-    "@ipsum-labs/dash-util": "file:../shared-util",
+    "@ipsum-labs/dash-types": "1.0.0",
+    "@ipsum-labs/dash-util": "1.0.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
@@ -39,7 +40,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-firebase-hooks": "^4.0.1",
-    "react-google-recaptcha-v3": "^1.7.0",
     "react-json-view": "^1.21.3",
     "react-linkify": "^1.0.0-alpha",
     "react-player": "^2.7.0",
@@ -95,8 +95,6 @@
   },
   "workspaces": {
     "nohoist": [
-      "@ipsum-labs/dash-types",
-      "@ipsum-labs/dash-util"
     ]
   },
   "browser": {

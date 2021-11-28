@@ -1,4 +1,4 @@
-import Strings from '~/util/Strings'
+import { Strings } from '@artemis-prime/wfw/util'
 
 export const APP_NAME = 'Ipsum Messages'
 const inst = new Strings([

@@ -8,7 +8,7 @@ import {
 
 import { TextField } from 'formik-material-ui'
 
-import { isValidEmail } from '@ipsum-labs/dash-util'
+import { isValidEmail } from '@artemis-prime/wfw/util'
 
 import Disclaimer from './disclaimer'
 import type WizardStopProps from './WizardStopProps'

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import type { TenantOrgRef } from '@ipsum-labs/dash-types'
+import { Link } from '@artemis-prime/wfw/components'
 
-import { Link } from '~/components'
+import type { TenantOrgRef } from '@ipsum-labs/dash-types'
 
 import type WizardStopProps from './WizardStopProps'
 import BackAndForwardButtons from './BackAndForwardButtons'

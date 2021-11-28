@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Grid } from '@material-ui/core'
 
-import { MarkerIcon } from '~/components'
+import { MarkerIcon } from '@artemis-prime/wfw/components'
 
 //import approvalVideo from './video/approval.mp4'
 
