@@ -5,7 +5,7 @@ It contains
 
 * Shared types and utilities that allow a single ontology for UI frameworks as well as the actual app domain
 * A shared UI library that multiple web targets can employ for uniformity, code reuse, etc
-* An example web target (`web-app`) that provides some simple Chat (and later Classifieds) functionality.   
+* An example web target (`app--ipsum-store`) that provides some simple Chat (and later Classifieds) functionality.   
 * firebase auth (implemented on client)
 * firestore and cloud functions (coming later)
 
