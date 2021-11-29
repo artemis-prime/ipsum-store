@@ -1,6 +1,6 @@
 import type { FacetSelections } from '..'
-import type { Parser } from './Parser<T>'
-import type { Serializer } from './Serializer<T>'
+import type { Parser } from './Parser'
+import type { Serializer } from './Serializer'
 
 const DELIM = {
   FACETS: '_',

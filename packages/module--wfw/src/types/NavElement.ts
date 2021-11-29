@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { SimpleHandler } from './ChangeHandler<T>'
+import type { SimpleHandler } from './ChangeHandler'
 
 interface NavElement {
   title:          string

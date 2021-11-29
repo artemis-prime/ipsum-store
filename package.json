@@ -16,7 +16,7 @@
     "clean:types": "yarn workspace @ipsum-labs/domain-types clean",
     "clean:util": "yarn workspace @ipsum-labs/util clean",
     "clean:web": "yarn workspace @ipsum-labs/ipsum-store clean",
-    "clean:all": "yarn clean:common && yarn clean:types && yarn clean:util && clean:wfw && yarn clean:web"
+    "clean:all": "yarn clean:common && yarn clean:types && yarn clean:util && yarn clean:wfw && yarn clean:web"
   },
   "workspaces": [
     "packages/app--ipsum-store",
