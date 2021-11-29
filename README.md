@@ -12,7 +12,7 @@ It contains
 ## Dashboard Web App (Tooling / stack)
 
 * Typescript with shared types on web and server tier (see above)
-* Clean architecture and code structure. See [Front End Architecture and Approach](docs/WEB_ARCHITECTURE.md)
+* Clean architecture and code structure. See [Front End Architecture and Approach](docs/web-architecture.md)
 * Built with Webpack, Babel, React Router, Material UI, and Mobx (no SSR for now)
 * Clean sharing between Material js world and sass; clean sass-only typography and layout
 
