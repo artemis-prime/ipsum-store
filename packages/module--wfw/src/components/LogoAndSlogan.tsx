@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from '../style'
 
 import Link from './Link'
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles()((theme) => ({
   slogan: {
     marginBottom: theme.spacing(2),
   },
@@ -25,7 +25,7 @@ const LogoAndSlogan: React.FC<{
   logoProps,
   slogan
 }) => {
-  const s = useStyles()
+  const { classes: s } = useStyles()
 
   return (
     <>

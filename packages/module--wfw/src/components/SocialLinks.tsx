@@ -1,19 +1,21 @@
 import React from 'react'
 import cx from 'classnames'
 
-import { IconButton, makeStyles } from '@material-ui/core'
+import { IconButton } from '@mui/material'
+
+import { makeStyles } from '../style'
 
 import type { NavElement } from '../types'
 import { toKebabCase } from '../util'
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles()((theme) => ({
 
   socialIconRow: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       marginBottom: theme.spacing(3),
     },
   },
@@ -37,11 +39,17 @@ const SocialIcons: React.FC<{
   className
 }) => {
   
-  const s = useStyles()
+  const { classes: s } = useStyles()
   return (
     <div className={cx(s.socialIconRow, className ? className : '')}>
       {links.map((navElement: NavElement) => (
-        <IconButton href={navElement.to!} key={toKebabCase(navElement.title!)} className={s.socialIcon} target='_blank'>
+        <IconButton
+          href={navElement.to!}
+          key={toKebabCase(navElement.title!)}
+          className={s.socialIcon}
+          target='_blank'
+          size="large"
+        >
           {navElement.uiElement!}
         </IconButton>
       ))}

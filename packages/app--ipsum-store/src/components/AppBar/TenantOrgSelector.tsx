@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { observer } from 'mobx-react'
 import cx from 'classnames'
 
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 
 import type { NavElement } from '@artemis-prime/wfw/types'
 import { ButtonMenu, NavElementMenu } from '@artemis-prime/wfw/components'

@@ -3,18 +3,19 @@ import cx from 'classnames'
 
 import { BrowserRouter as Router, useLocation } from 'react-router-dom'
 
-import {
-  Container, 
-  CssBaseline, 
-  makeStyles, 
-  MuiThemeProvider 
-} from '@material-ui/core'
+import { CacheProvider } from "@emotion/react"
+import createCache from "@emotion/cache"
+import { ThemeProvider } from "@mui/material/styles"
+
+import { Container, CssBaseline } from '@mui/material'
 
 import type {
   BoundingRect, 
   ChangeHandler, 
   NavElement 
 } from '@artemis-prime/wfw/types'
+
+import { makeStyles } from '@artemis-prime/wfw/style'
 
 import {
   AppBar, 
@@ -28,22 +29,26 @@ import { AuthServiceProvider } from '~/domain/auth'
 
 import ThreadService, { ThreadServiceContext } from '~/domain/thread/ThreadService'
 
+export const muiCache = createCache({
+  "key": "mui",
+  "prepend": true
+})
+
 import theme from './style/muiTheme'
 import './style/main.scss'
 
 import messages from '~/domain/thread/threadFixture'
 const threadService = new ThreadService(messages)
 
-
 import styles from './style/mainLayout.style.js'
-const useStyles = makeStyles(styles as any)
+const useStyles = makeStyles()(styles as any)
 
 const PageLayout: React.FC<{}> = ({ children }) => {
 
   const location = useLocation()
   const [desktopMenuRect, setDesktopMenuRect] = useState<BoundingRect>({ x: -1, y: -1, width: -1, height: -1 })
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
 
   const toolbarResizeListener = (rect: BoundingRect) => {
     setDesktopMenuRect({ x: rect.x, y: rect.height, width: rect.width, height: -1 /* ignore */ })
@@ -82,20 +87,21 @@ const PageLayout: React.FC<{}> = ({ children }) => {
 
 //       <Footer className={s.footer} />
 
-
 const App: React.FC<{}> = () => (
-  <MuiThemeProvider theme={theme}>
-    <CssBaseline />
-    <AuthServiceProvider>
-    <ThreadServiceContext.Provider value={threadService} > 
-    <Router>
-      <PageLayout>
-        <Routes />
-      </PageLayout>
-    </Router>
-    </ThreadServiceContext.Provider>
-    </AuthServiceProvider>
-  </MuiThemeProvider>
+  <CacheProvider value={muiCache}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <AuthServiceProvider>
+      <ThreadServiceContext.Provider value={threadService} > 
+      <Router>
+        <PageLayout>
+          <Routes />
+        </PageLayout>
+      </Router>
+      </ThreadServiceContext.Provider>
+      </AuthServiceProvider>
+    </ThemeProvider>
+  </CacheProvider>
 )
 
 // 'main' container will always have a class built from the main part of the route.

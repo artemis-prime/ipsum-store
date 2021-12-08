@@ -6,7 +6,7 @@ import {
   Form 
 } from 'formik'
 
-import { TextField } from 'formik-material-ui'
+import { TextField } from 'formik-mui'
 
 import { isValidEmail } from '@artemis-prime/wfw/util'
 

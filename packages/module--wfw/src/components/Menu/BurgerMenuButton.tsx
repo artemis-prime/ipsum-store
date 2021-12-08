@@ -1,9 +1,11 @@
 import React from 'react'
 
-import { IconButton, makeStyles } from '@material-ui/core'
-import { MenuRounded as BurgerIcon } from '@material-ui/icons'
+import { IconButton } from '@mui/material'
+import { MenuRounded as BurgerIcon } from '@mui/icons-material'
 
-const useStyles = makeStyles((theme) => ({
+import { makeStyles } from '../../style'
+
+const useStyles = makeStyles()((theme) => ({
 
   button: {
     marginRight: '-12px', // so button appears round on hover but is aligned w left margin
@@ -20,12 +22,12 @@ const BurgerMenuButton: React.FC<{
 }> = ({ 
   onClick 
 }) => {
-  const s = useStyles()
+  const { classes: s } = useStyles()
   return (
-    <IconButton onClick={onClick} className={s.button}>
+    <IconButton onClick={onClick} className={s.button} size="large">
       <BurgerIcon className={s.icon} />
     </IconButton>
-  )
+  );
 }
 
 export default BurgerMenuButton

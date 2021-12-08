@@ -5,9 +5,10 @@ import cx from 'classnames'
 import {
   Container,
   Grid,
-  IconButton,
-  makeStyles
-} from '@material-ui/core'
+  IconButton
+} from '@mui/material'
+
+import { makeStyles } from '@artemis-prime/wfw/style'
 
 import { useAuthService } from '~/domain/auth'
 
@@ -26,7 +27,7 @@ import {
 import FinePrintContent from './finePrint'
 
 import styles from './footerLayout.style.js'
-const useStyles = makeStyles(styles as any)
+const useStyles = makeStyles()(styles as any)
 
 const Footer: React.FC<{
   className: string
@@ -34,7 +35,7 @@ const Footer: React.FC<{
   className 
 }) => {
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
   const auth = useAuthService()
   const currentYear = new Date().getFullYear()
   const handlers = new Map<string, SimpleHandler>()

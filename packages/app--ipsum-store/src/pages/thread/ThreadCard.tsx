@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogActions,
   Paper
-} from '@material-ui/core'
+} from '@mui/material'
 
 import { firstNWords } from '@artemis-prime/wfw/util'
 import type { Message } from '@ipsum-labs/domain-types'

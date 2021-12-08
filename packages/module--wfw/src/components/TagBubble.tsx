@@ -1,9 +1,9 @@
 import React from 'react'
 import cx from 'classnames'
 
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from '../style'
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles()((theme) => ({
   statusTag: {
     display: 'inline-flex',
     alignItems: 'center',
@@ -39,7 +39,7 @@ const TagBubble: React.FC<TagBubbleDesc> = ({
   onClick
 }) => {
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
 
   const styles: any = {}
   if (textColor) {

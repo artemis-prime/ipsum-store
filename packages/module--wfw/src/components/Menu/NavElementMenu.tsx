@@ -1,23 +1,16 @@
 import React from 'react'
 import cx from 'classnames'
 
-import { 
-  MenuItem,
-  MenuList,
-  makeStyles,
-} from '@material-ui/core'
+import { MenuItem, MenuList } from '@mui/material'
 
+import { makeStyles } from '../../style'
 import Link from '../Link'
-import type {
- NavElement, 
- SimpleHandler 
-} from '../../types'
-
+import type { NavElement, SimpleHandler } from '../../types'
 import { mapNavElementHandler, toKebabCase } from '../../util'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   menu: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
     },
   },
@@ -64,7 +57,7 @@ const NavElementMenu: React.FC<{
   hideIcons,
   hideTitles
 }) => {
-  const s = useStyles()
+  const { classes: s } = useStyles()
   return (
     <MenuList className={s.menu}>
     {elements.map((item) => {

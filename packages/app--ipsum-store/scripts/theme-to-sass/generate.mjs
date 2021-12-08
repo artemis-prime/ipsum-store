@@ -111,8 +111,7 @@ const EXCEPT = [
   'shadows',
   'transitions',
   'zIndex',
-  'props',
-  'overrides',
+  'components',
   'ext-menuButton',
   'ext-menuButtonLabel'
 ]

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, Grid } from '@material-ui/core'
+import { Button, Grid } from '@mui/material'
 
 import { Video } from '~/components'
 

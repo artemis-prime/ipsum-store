@@ -1,13 +1,13 @@
 import React from 'react'
 import cx from 'classnames'
 
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from '../../style'
 
 import { Link } from '../../components'
 import { toKebabCase, mapNavElementHandler } from '../../util'
 import type { NavElement, SimpleHandler } from '../../types'
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles()((theme: any) => ({
 
   horizFooter: {
     display: 'flex',
@@ -45,7 +45,7 @@ const HorizantalFooterNav: React.FC<{
   className
 }) => {
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
 
   return (
     <ul className={cx(s.horizFooter, className ? className : '')}>

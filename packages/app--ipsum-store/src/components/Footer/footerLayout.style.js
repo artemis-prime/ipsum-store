@@ -41,7 +41,7 @@ export default (theme) => ({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       marginBottom: theme.spacing(3),
     },
   },
@@ -59,14 +59,14 @@ export default (theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     marginBottom: theme.spacing(3),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginBottom: theme.spacing(1),
     },
   },
   navGridContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       alignItems: 'stretch',
     },
   },

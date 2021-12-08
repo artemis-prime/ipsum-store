@@ -1,10 +1,10 @@
-import { useMediaQuery, useTheme } from '@material-ui/core'
+import { useMediaQuery, useTheme } from '@mui/material'
 
 import type { SimpleHandler, NavElement } from '../types'
 
 export const useIsMobile = (): boolean => {
   const theme = useTheme()
-  return useMediaQuery(theme.breakpoints.down('sm'))
+  return useMediaQuery(theme.breakpoints.down('md'));
 }
 
 export const mapNavElementHandler = (
@@ -57,7 +57,7 @@ export const capitalize = (str: string): string => (
 
 export const splitCamelOrPascalCase = (str: string): string => {
   const camelCase = str.charAt(0).toUpperCase() + str.slice(1) 
-  return camelCase.replace(/([0-9A-Z])/g, ' $&')
+  return camelCase.replace(/([0-9A-Z])/g, ' $&');
 }
  
 

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { observer } from 'mobx-react'
 import cx from 'classnames'
 
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from '../../style'
 
 import type { NavElement, SimpleHandler } from '../../types'
 
@@ -14,7 +14,7 @@ import LinkButton from '../LinkButton'
 
 import type { CoreAuthService } from '../../types/auth'
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles()((theme: any) => ({
   menuGroupOuter: {
     display: 'flex',
     flexDirection: 'row',
@@ -47,26 +47,8 @@ const MenuButtons: React.FC<{
   groupClassName
 }) => {
 
-  const s = useStyles()
-  /*
-  const userNameRef = useRef<{
-    displayName: string
-    uid: string
-  } | undefined>(undefined)
-
-  useEffect(() => {
-      if (auth.currentIpsumUser && (userNameRef.current?.uid !== auth.currentIpsumUser!.uid)) {
-        userNameRef.current = {
-          displayName: `${('' + auth.currentIpsumUser!.firstName.charAt(0)).toUpperCase()} ${auth.currentIpsumUser!.lastName}`,  
-          uid: auth.currentIpsumUser.uid
-        }
-      }
-      else {
-        userNameRef.current = undefined  
-      }
-  }, [auth.currentIpsumUser])
-  */
-
+  const { classes: s } = useStyles()
+  
   return (
     <div className={cx(s.menuGroupOuter, (groupClassName) ? groupClassName : '')} >
       {navElements.map((element) => {

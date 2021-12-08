@@ -1,12 +1,11 @@
 import React from 'react'
 import cx from 'classnames'
 
-import { makeStyles } from '@material-ui/styles'
-import type { Theme } from '@material-ui/core'
-
 import logo28 from './payminto-logo--28x32.png'
 import logo40 from './payminto-logo--40x45.webp'
 import logo60 from './payminto-logo--60x68.webp'
+
+import { makeStyles } from '@artemis-prime/wfw/style'
 
 const LOGOS = {
   small: {
@@ -38,7 +37,7 @@ const LOGOS = {
   }
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme) => ({
 
   outer: {
     display: 'flex',
@@ -73,7 +72,7 @@ const IpsumLogo: React.FC<{
   className
 }) => {
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
   const l: any = LOGOS[size]
 
   const spreadMe = l.text ? l.text : {}

@@ -1,11 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 
-import {
-  Button,
-  IconButton,
-  makeStyles,
-} from '@material-ui/core'
+import { Button, IconButton } from '@mui/material'
 
 import {
   usePopupState,
@@ -16,9 +12,12 @@ import {
   // https://www.npmjs.com/package/material-ui-popup-state#using-popover-and-menu-with-bindhover
 import Popover from 'material-ui-popup-state/HoverPopover'
 
+import { makeStyles } from '../../style'
+
+
 import type MenuTriggerProps from './MenuTriggerProps'
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles()((theme: any) => ({
   menuButton: {
     ...theme.ext.menuButton,
     //marginBottom: '5.5px'
@@ -48,7 +47,7 @@ const ButtonMenu: React.FC<MenuTriggerProps> = ({
     popupId: id, 
   })
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
   const buttonProps = (triggerProps === undefined) ? {} : triggerProps
 
   if (icon && text) {
@@ -72,14 +71,14 @@ const ButtonMenu: React.FC<MenuTriggerProps> = ({
     (popoverProps.open) ? 'popover-open' : ''
   )
 
-  return (<>
+  return <>
     {(icon && !text) ? (
       <IconButton
         {...buttonProps}
         {...bindHover(popupState)}
         className={cx(s.menuButton, buttonClass)}
         classes={{ label: s.buttonText }}
-      >
+        size="large">
         {icon}
       </IconButton >
     ) : (
@@ -101,7 +100,7 @@ const ButtonMenu: React.FC<MenuTriggerProps> = ({
     >
       {children}
     </Popover>
-  </>)
+  </>;
 }
 
 export default ButtonMenu

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react' 
 import cx from 'classnames'
 
-import { PaymentRounded } from '@material-ui/icons'
+import { PaymentRounded } from '@mui/icons-material'
 
 import visaImage from './cc-images/VisaCard.svg'
 import masterCardImage from './cc-images/MasterCard.svg'

@@ -1,13 +1,12 @@
 import React from 'react'
 
-import {
-  Container,
-  Grid,
-  makeStyles
-} from '@material-ui/core'
+import { Container, Grid } from '@mui/material'
+
+import { makeStyles } from '../../style'
+
 
 import styles from './footerLayout.style.js'
-const useStyles = makeStyles(styles as any)
+const useStyles = makeStyles()(styles as any)
 
 const FooterShell: React.FC<{
   className?: string
@@ -32,7 +31,7 @@ const FooterShell: React.FC<{
   children
 }) => {
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
 
   return (
     <Container component='footer' maxWidth={false} className={className ? className : ''}>

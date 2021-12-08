@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Link as RouterLink } from 'react-router-dom'
-import { Link as MaterialLink } from '@material-ui/core'
+import { Link as MaterialLink } from '@mui/material'
 
 import type LinkProps from './LinkProps'
 
@@ -28,10 +28,10 @@ const Link: React.FC<LinkProps> = ({
   
   if (external) {
     return (
-      <MaterialLink {...props} {...rest}>
+      <MaterialLink {...props} {...rest} underline="hover">
         {children}
       </MaterialLink>
-    )  
+    );  
   }
 
   const CustomLink = React.useMemo(
@@ -44,10 +44,10 @@ const Link: React.FC<LinkProps> = ({
   )
 
   return (
-    <MaterialLink component={CustomLink} {...rest} {...props}>
+    <MaterialLink component={CustomLink} {...rest} {...props} underline="hover">
       {children}
     </MaterialLink>
-  )
+  );
 }
 
 export default Link

@@ -1,13 +1,12 @@
 import React from 'react'
 import cx from 'classnames'
 
-import { 
-  makeStyles,
-  Switch, 
-  Tooltip,  
-} from '@material-ui/core'
+import { Switch, Tooltip } from '@mui/material'
 
-const useStyles = makeStyles((theme: any) => ({
+import { makeStyles } from '../style'
+
+
+const useStyles = makeStyles()((theme) => ({
 
   rightLabel: {},
   leftLabel: {},
@@ -52,7 +51,7 @@ const BinarySwitch: React.FC<{
   rightClass
 }) => {
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
 
   const leftClick = () => {!disabled && setRight(false)}
   const rightClick = () => {!disabled && setRight(true)}

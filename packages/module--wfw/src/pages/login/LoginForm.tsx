@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
 import { observer } from 'mobx-react'
-import { useHistory, useLocation } from 'react-router'
+import { useHistory, useLocation } from 'react-router-dom'
 
 import { 
   Button,
   LinearProgress,
   Paper
-} from '@material-ui/core'
+} from '@mui/material'
 
 import {
  Formik, 
  Field, 
  Form 
 } from 'formik'
-import { TextField } from 'formik-material-ui'
+import { TextField } from 'formik-mui'
 
 import type { CoreAuthService, Credentials } from '../../types/auth'
 import { isValidEmail, errorToString } from '../../util'

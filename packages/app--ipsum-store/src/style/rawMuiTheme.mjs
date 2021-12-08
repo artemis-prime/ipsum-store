@@ -189,7 +189,7 @@ export default {
   spacing: 8,
 
   palette: {
-    type: 'light',
+    mode: 'light',
     ...PALETTE,
   },
   typography: {
@@ -199,239 +199,276 @@ export default {
     ...SHAPE
   },
 
-  props: {
+  components: {
+
     MuiButtonBase: {
-      disableRipple: true
+      defaultProps: {
+        disableRipple: true
+      }
     },
-    MuiButton: {
-      variant: 'contained',
-      color: 'primary',
-    },
-    MuiInputLabel: {
-        // display labels above the control by default
-        // (no animation behavior)
-      shrink: true
-    },
-    MuiContainer: {
-      disableGutters: true
-    }
-
-  },
-
-  overrides: {
 
     MuiButton: {
-      root: {
-        lineHeight: 1.2,
-        whiteSpace: 'nowrap',
-        textTransform: 'capitalize'
+      defaultProps: {
+        variant: 'contained',
+        color: 'primary',
       },
-      containedPrimary: {
-        color: PALETTE.common.white,
-        '&:hover': {
-          color: PALETTE.text.secondary,
-          backgroundColor: PALETTE.primary.light,
-        }
-      },
-      containedSizeLarge: {
-        padding: '12px 24px',
-      },
-      outlinedSizeLarge: {
-        padding: '11px 24px', // account for border
-      },
-      containedSizeSmall: {
-        padding: '8px 18px',
-      },
-      outlinedSizeSmall: {
-        padding: '7px 18px', // account for border
-      },
-
-      outlined: {
-        boxSizing: 'border-box',
-        borderColor: 'rgba(0, 0, 0, 0.95)',
-        color:  'rgba(0, 0, 0, 0.95)',
-        opacity: 0.8,
-        '&:hover': {
-          opacity: 1,
-        }
-      },
-
-      outlinedPrimary: {
-        borderColor: PALETTE.primary.dark,
-        color: `${PALETTE.primary.dark} !important`,
-        '&:hover': {
-          borderColor: PALETTE.primary.dark,
-          color: `${PALETTE.primary.light} !important`,
-          boxShadow:  '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 2px 0px rgb(0 0 0 / 12%)'
+      styleOverrides: {
+        root: {
+          lineHeight: 1.2,
+          whiteSpace: 'nowrap',
+          textTransform: 'capitalize'
         },
-      },
+        containedPrimary: {
+          color: PALETTE.common.white,
+          '&:hover': {
+            color: PALETTE.text.secondary,
+            backgroundColor: PALETTE.primary.light,
+          }
+        },
+        containedSizeLarge: {
+          padding: '12px 24px',
+        },
+        outlinedSizeLarge: {
+          padding: '11px 24px', // account for border
+        },
+        containedSizeSmall: {
+          padding: '8px 18px',
+        },
+        outlinedSizeSmall: {
+          padding: '7px 18px', // account for border
+        },
+  
+        outlined: {
+          boxSizing: 'border-box',
+          borderColor: 'rgba(0, 0, 0, 0.95)',
+          color:  'rgba(0, 0, 0, 0.95)',
+          opacity: 0.8,
+          '&:hover': {
+            opacity: 1,
+          }
+        },
+  
+        outlinedPrimary: {
+          borderColor: PALETTE.primary.dark,
+          color: `${PALETTE.primary.dark} !important`,
+          '&:hover': {
+            borderColor: PALETTE.primary.dark,
+            color: `${PALETTE.primary.light} !important`,
+            boxShadow:  '0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 2px 0px rgb(0 0 0 / 12%)'
+          },
+        },
+      }
     },
 
-    MuiInputLabel: {
-      formControl: {
-        position: 'static'
+    MuiContainer: {
+      defaultProps: {
+        disableGutters: true
       },
+      styleOverrides: {
+        root: {
+          // impl in style/responsivePadding.scss due to bug in MUI
+        },
+      }
     },
 
-    MuiLink: {
-      root: {
-        paddingLeft: 0,
-        paddingRight: 0,
+    MuiFormControl: {
+      styleOverrides: {
+        root: {
+          display: 'flex', // not 'inline-flex'
+          '& legend': {
+            marginBottom: '3px'
+          },
+          '&:hover': {
+            '& .MuiFormLabel-root:not(.Mui-disabled)': {
+              color: PALETTE.text.primary,
+              fontWeight: 600
+            }  
+          }
+        },
+      }
+    },
+
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          marginLeft: 0,
+          marginRight: 0,
+        },
+        label: {
+          fontSize: '0.8rem'
+        }
+      }
+    },
+
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          fontSize: '11px',
+          lineHeight: '12px',
+          marginTop: '1px',
+          textAlign: 'right'
+        }
       }
     },
 
     MuiFormLabel: {
-      root: {
-        fontSize: '1.2rem', // to somewhat match the MuiInputLabel-shrink labels
-        lineHeight: '1.3rem',
-        color: GREY_SHADES[7],
-        '&.MuiInputLabel-shrink': {
-          fontSize: '1.2rem',
+      styleOverrides: {
+        root: {
+          fontSize: '1.2rem', // to somewhat match the MuiInputLabel-shrink labels
           lineHeight: '1.3rem',
-        },
-        '&.Mui-focused': {
-//          color: 'inherit'
-          color: PALETTE.text.primary,
-          fontWeight: 600
+          color: GREY_SHADES[7],
+          '&.MuiInputLabel-shrink': {
+            fontSize: '1.2rem',
+            lineHeight: '1.3rem',
+          },
+          '&.Mui-focused': {
+  //          color: 'inherit'
+            color: PALETTE.text.primary,
+            fontWeight: 600
+          },
         },
       },
     },
 
     MuiInput: {
-      formControl: {
-        marginTop: '0 !important',
-        marginBottom: '13px', // as per lineHeight + marginTop of MuiFormHelperText-root below
-        '&.Mui-error': {
-          marginBottom: 0,
+      styleOverrides: {
+        formControl: {
+          marginTop: '0 !important',
+          marginBottom: '13px', // as per lineHeight + marginTop of MuiFormHelperText-root below
+          '&.Mui-error': {
+            marginBottom: 0,
+          }
+        },
+        input: {
+          padding: '4px 6px'
         }
       },
-      input: {
-        padding: '4px 6px'
+    },
+
+    MuiInputLabel: {
+      defaultProps: {
+          // display labels above the control by default
+          // (no animation behavior)
+        shrink: true
+      },
+      styleOverrides: {
+        formControl: {
+          position: 'static'
+        },
       }
     },
 
-    MuiSelect: {
-      select: {
-        padding: '4px 6px'
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          paddingLeft: 0,
+          paddingRight: 0,
+        }
       }
     },
 
     MuiMenu: {
-      paper: {
-        padding: '0 !important'
-      }
-    },
-
-    MuiFormControl: {
-      root: {
-        display: 'flex', // not 'inline-flex'
-        '& legend': {
-          marginBottom: '3px'
-        },
-        '&:hover': {
-          '& .MuiFormLabel-root:not(.Mui-disabled)': {
-            color: PALETTE.text.primary,
-            fontWeight: 600
-          }  
+      styleOverrides: {
+        paper: {
+          padding: '0 !important'
         }
-      },
-    },
-
-    MuiFormControlLabel: {
-      root: {
-        marginLeft: 0,
-        marginRight: 0,
-      },
-      label: {
-        fontSize: '0.8rem'
-      }
-    },
-
-    MuiFormHelperText: {
-      root: {
-        fontSize: '11px',
-        lineHeight: '12px',
-        marginTop: '1px',
-        textAlign: 'right'
-      }
-    },
-
-    MuiContainer: {
-      root: {
-        // impl in style/responsivePadding.scss due to bug in MUI
-      },
-    },
-
-    MuiRadio: {
-      root: {
-        padding: '2px',
-        paddingRight: '4px',
-        color: 'initial'
-      }
-    },
-
-    MuiSwitch: {
-      root: {
-        marginTop: -5,
-        marginBottom: -5,
       }
     },
 
     MuiPaper: {
-      root: {
-        padding: SPACING_BASE * 2 + 'px',
-        borderRadius: SHAPE.borderRadius,
+      styleOverrides: {
+        root: {
+          padding: SPACING_BASE * 2 + 'px',
+          borderRadius: SHAPE.borderRadius,
+        }
       }
     },
 
-    MuiTableContainer: {
-      root: {
-        padding: 0
+    MuiRadio: {
+      styleOverrides: {
+        root: {
+          padding: '2px',
+          paddingRight: '4px',
+          color: 'initial'
+        }
+      }
+    },
+
+    MuiSelect: {
+      styleOverrides: {
+        select: {
+          padding: '4px 6px'
+        }
+      }
+    },
+
+    MuiSwitch: {
+      styleOverrides: {
+        root: {
+          marginTop: -5,
+          marginBottom: -5,
+        }
       }
     },
 
     MuiTableBody: {
-      root: {
-        backgroundColor: PALETTE.background.default,
+      styleOverrides: {
+        root: {
+          backgroundColor: PALETTE.background.default,
+        }
+      }
+    },
+
+    MuiTableCell: {
+      styleOverrides: {
+        head: {
+          paddingBottom: SPACING_BASE * 2 + 'px',
+          fontWeight: 600,
+          textTransform: 'uppercase',
+        },
+        root: {
+          borderBottom: 'none',
+          fontSize: '1rem',
+        },
+      }
+    },
+
+    MuiTableContainer: {
+      styleOverrides: {
+        root: {
+          padding: 0
+        }
       }
     },
 
     MuiTableRow: {
-      head: {
-        borderBottom: '1px solid #aaa',
-      },
-      root: {
-        borderTop: '0.5px solid lightgrey',
-        verticalAlign: 'baseline',
-      },
-    },
-
-    MuiTableCell: {
-      head: {
-        paddingBottom: SPACING_BASE * 2 + 'px',
-        fontWeight: 600,
-        textTransform: 'uppercase',
-      },
-      root: {
-        borderBottom: 'none',
-        fontSize: '1rem',
-      },
+      styleOverrides: {
+        head: {
+          borderBottom: '1px solid #aaa',
+        },
+        root: {
+          borderTop: '0.5px solid lightgrey',
+          verticalAlign: 'baseline',
+        },
+      }
     },
 
     MuiTimelineItem: {
-      alignLeft: {
+      styleOverrides: {
+        alignLeft: {
 
-      },
-      missingOppositeContent: {
-        '&:before': {
-          flexGrow: 0,
-          content: '""', // must use this syntax!
-          paddingLeft: SPACING_BASE * 2 + 'px'
+        },
+        missingOppositeContent: {
+          '&:before': {
+            flexGrow: 0,
+            content: '""', // must use this syntax!
+            paddingLeft: SPACING_BASE * 2 + 'px'
+          }
         }
       }
-    }
-  },
+    },
 
+  },
+  
   ext: EXT
 }
-

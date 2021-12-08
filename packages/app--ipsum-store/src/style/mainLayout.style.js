@@ -19,7 +19,7 @@ export default (theme) => ({
   main: {
     maxWidth: 'initial',
     flexGrow: 1,
-    [theme.breakpoints.between('xs', 'sm')]: {
+    [theme.breakpoints.between('xs', 'md')]: {
       marginTop: theme.ext.toolbar.small,
     },
     [theme.breakpoints.up('md')]: {

@@ -34,5 +34,8 @@
     "eslint-config-airbnb-typescript-prettier": "^4.2.0",
     "eslint-config-prettier": "^8.3.0",
     "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "material-ui-popup-state": "^2.0.0"
   }
 }

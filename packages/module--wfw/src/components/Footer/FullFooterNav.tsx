@@ -1,18 +1,20 @@
 import React from 'react'
 import cx from 'classnames'
 
-import { Grid, makeStyles } from '@material-ui/core'
+import { Grid } from '@mui/material'
+
+import { makeStyles } from '../../style'
 
 import { Link } from '../../components'
 import { toKebabCase, mapNavElementHandler } from '../../util'
 import type { NavElement, SimpleHandler } from '../../types'
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles()((theme: any) => ({
 
   navGridContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       alignItems: 'stretch',
     },
   },
@@ -51,7 +53,8 @@ const FullFooterNav: React.FC<{
   className
 }) => {
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
+
   return (
     <Grid container className={cx(s.navGridContainer, 'footer-nav', className ? className : '')}>
       {sections.map((section) => (

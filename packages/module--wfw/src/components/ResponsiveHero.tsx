@@ -1,12 +1,15 @@
 import React from 'react'
-import { makeStyles, useTheme, useMediaQuery } from '@material-ui/core'
-import classNames from 'classnames'
+import cx from 'classnames'
 import json2mq from 'json2mq'
 
-const useStyles = makeStyles((theme) => ({
+import { useTheme, useMediaQuery } from '@mui/material'
+
+import { makeStyles } from '../style'
+
+const useStyles = makeStyles()((theme) => ({
   image: {
     height: '90vh',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       height: '95vh',
     },
     minHeight: 600,
@@ -79,7 +82,7 @@ const ResponsiveHero: React.FC<{
   children 
 }) => {
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
   const theme = useTheme()
 
   const isPortrait = useMediaQuery(json2mq({ orientation: 'portrait' }))
@@ -112,7 +115,7 @@ const ResponsiveHero: React.FC<{
     } : {}
 
   return (
-    <div className={classNames(s.image, className)} style={elementStyles}>
+    <div className={cx(s.image, className)} style={elementStyles}>
       <div className={s.content}>
         {children}
       </div>

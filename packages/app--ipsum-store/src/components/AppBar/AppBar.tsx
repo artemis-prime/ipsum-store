@@ -2,8 +2,6 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import cx from 'classnames'
 
-import { makeStyles } from '@material-ui/core'
-
 import type { 
   NavElement,
   BoundingRect, 
@@ -13,6 +11,7 @@ import type {
 
 import { AppBarShell, MenuButtons } from '@artemis-prime/wfw/components'
 import { useIsMobile } from '@artemis-prime/wfw/util'
+import { makeStyles } from '@artemis-prime/wfw/style'
 
 
 import { 
@@ -34,7 +33,7 @@ import {
 } from '~/settings/app/rightNav'
 
 import styles from './appBar.style.js'
-const useStyles = makeStyles(styles as any)
+const useStyles = makeStyles()(styles as any)
 
 const AppBar: React.FC<{
   displayMegaMenu: ChangeHandler<NavElement>
@@ -53,7 +52,7 @@ const AppBar: React.FC<{
 }) => {
 
   const desktop = !useIsMobile()
-  const s = useStyles()
+  const { classes: s } = useStyles()
   
   const auth = useAuthService()
 

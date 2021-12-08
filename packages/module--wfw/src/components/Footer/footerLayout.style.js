@@ -20,7 +20,7 @@ export default (theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     marginBottom: theme.spacing(3),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginBottom: theme.spacing(1),
     },
   },

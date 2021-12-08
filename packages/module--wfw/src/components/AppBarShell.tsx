@@ -9,17 +9,18 @@ import cx from 'classnames'
 
 import {
   AppBar,
-  makeStyles,
   Toolbar,
   useScrollTrigger,
-} from '@material-ui/core'
+} from '@mui/material'
 
 import { useWindowWidth } from '@react-hook/window-size'
+
+import { makeStyles } from '../style'
 import { useIsMobile } from '../util'
 
 import type { BoundingRect, ChangeHandler } from '../types'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
 
   //  NOTE: Padding is implemented in style/scss-partials/_responsivePadding.scss 
   //  ALSO: Visual styles such as color and transparency
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     paddingBottom: '5px',
 
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       alignItems: 'center',
       paddingBottom: 0
     },
@@ -56,7 +57,7 @@ const AppBarShell: React.FC<{
 
   const desktop = !useIsMobile()
   const trigger = useScrollTrigger({ threshold: 0, disableHysteresis: true })
-  const s = useStyles()
+  const { classes: s } = useStyles()
 
   const toolbarRef = useRef<any>()
   const w = useWindowWidth()

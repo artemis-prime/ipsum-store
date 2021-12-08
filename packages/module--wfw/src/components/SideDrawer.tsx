@@ -1,12 +1,14 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import { makeStyles, SwipeableDrawer } from '@material-ui/core'
+import { SwipeableDrawer } from '@mui/material'
+
+import { makeStyles } from '../style'
 
   // https://material-ui.com/~/components/drawers/
 const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles()((theme) => ({
   drawerOuter: {
     overflow: 'hidden',
     display: 'flex',
@@ -36,7 +38,7 @@ const SideDrawer: React.FC<{
   children
 }) => {
 
-  const s = useStyles()
+  const { classes: s } = useStyles()
   return (
     <SwipeableDrawer 
       disableBackdropTransition={!iOS} 

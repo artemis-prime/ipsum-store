@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 
-import { Button } from '@material-ui/core'
+import { Button } from '@mui/material'
 
 const BackAndForwardButtons: React.FC<{
   step?: number

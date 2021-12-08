@@ -5,7 +5,7 @@ import {
   Button,
   LinearProgress,
   Paper
-} from '@material-ui/core'
+} from '@mui/material'
 
 import {
  Formik, 
@@ -13,7 +13,7 @@ import {
  Form 
 } from 'formik'
 
-import { TextField } from 'formik-material-ui'
+import { TextField } from 'formik-mui'
 import * as QueryString from 'query-string'
 
 import type { CoreAuthService } from '../../types/auth'

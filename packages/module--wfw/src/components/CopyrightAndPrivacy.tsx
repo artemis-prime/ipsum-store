@@ -1,17 +1,17 @@
 import React from 'react'
 import cx from 'classnames'
 
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from '../style'
 
 import Link from './Link'
 
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles()((theme) => ({
 
   copyrightOuter: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    color: theme.palette.text.primary.main,
+    color: theme.palette.text.primary,
     '& p': {
       marginRight: theme.spacing(1),
     },
@@ -38,7 +38,7 @@ const CopyrightAndPrivacy: React.FC<{
   className
 }) => {
   
-  const s = useStyles()
+  const { classes: s } = useStyles()
 
   const currentYear = new Date().getFullYear()
   const copyrightYears =  (firstYear && firstYear < currentYear) ?

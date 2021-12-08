@@ -1,9 +1,9 @@
 import React from 'react' 
 
-import Button, { ButtonProps } from '@material-ui/core/Button'
+import Button, { ButtonProps } from '@mui/material/Button'
 
 import { Link as RouterLink } from 'react-router-dom'
-import { Link as MaterialLink } from '@material-ui/core'
+import { Link as MaterialLink } from '@mui/material'
 
 import type LinkProps from './LinkProps'
 
