@@ -70,6 +70,7 @@
     "@types/webpack-env": "^1.16.2",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.2.2",
+    "babel-plugin-inline-react-svg": "^2.0.1",
     "css-loader": "^6.2.0",
     "dotenv-webpack": "^7.0.3",
     "es-dirname": "^0.1.0",

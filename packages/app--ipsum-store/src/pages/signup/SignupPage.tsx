@@ -25,6 +25,8 @@ import type WizardStopProps from './WizardStopProps'
 
 import './style.scss'
 
+const POST_LOGIN = '/messages'
+
 const stopMap = new Map<string, WizardStop>()
 stopMap.set('user', {
   Component: EmailAndPasswordForm,
@@ -142,14 +144,14 @@ const SignupPage: React.FC<{}> = () => {
       if (!bucket().userCreated) {
         auth.login(bucket().stops['user'].email, bucket().stops['user'].password)
           .then(() => {
-            history.push('/payments')
+            history.push(POST_LOGIN)
           })
           .catch((e) => {
             setErrorString(errorToString(e))
           })
       }
       else {
-        history.push('/payments')
+        history.push(POST_LOGIN)
       }
     }
   }
@@ -159,7 +161,7 @@ const SignupPage: React.FC<{}> = () => {
 
       try {
         if (bucket().done) {
-          history.push('/payments')
+          history.push(POST_LOGIN)
           resolve()
           return
         }

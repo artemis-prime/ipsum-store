@@ -6,16 +6,16 @@ $color-primary: map-get(mui.$map, 'palette-primary-main');
 }
 
 .appbar-common {
-  color: map-get(mui.$map, 'palette-text-primary') !important;
+  color: white !important;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
   transition-property: background;
 
     // The logo art is off center and is determining height
-  padding-left: 16px !important;
-  padding-right: 16px !important;
-  padding-bottom: 0px !important;
-  padding-top: 5px !important;
+  //padding-left: 16px !important;
+  //padding-right: 16px !important;
+  //padding-bottom: 0px !important;
+  //padding-top: 5px !important;
 
   &.appbar-desktop-top {
     box-shadow: none;

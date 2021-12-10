@@ -5,7 +5,7 @@ import { Container, Grid } from '@mui/material'
 import { makeStyles } from '../../style'
 
 
-import styles from './footerLayout.style.js'
+import styles from './footerShell.style.js'
 const useStyles = makeStyles()(styles as any)
 
 const FooterShell: React.FC<{

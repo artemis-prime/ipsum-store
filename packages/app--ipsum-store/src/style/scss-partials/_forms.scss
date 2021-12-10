@@ -19,16 +19,13 @@ $color-error: map-get(mui.$map, 'palette-error-main');
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    position: relative;
   }
 
   max-width: 900px;
   min-width: 600px;
   padding: 0px ($spacing * 2);
-
-  .MuiPaper-root {
-    width: 100%;
-    position: relative;
-  }
 
   @media (max-width: $sm-width) {
     max-width: initial;

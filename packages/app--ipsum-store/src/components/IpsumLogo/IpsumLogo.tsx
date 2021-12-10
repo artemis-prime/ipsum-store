@@ -1,17 +1,15 @@
 import React from 'react'
 import cx from 'classnames'
 
-import logo28 from './payminto-logo--28x32.png'
-import logo40 from './payminto-logo--40x45.webp'
-import logo60 from './payminto-logo--60x68.webp'
+import Logo from './procom-logo--990x198.svg'
 
 import { makeStyles } from '@artemis-prime/wfw/style'
 
 const LOGOS = {
   small: {
     image: {
-      name: logo28,
-      w: 28,
+      //name: logo,
+      w: 160,
       h: 32
     },
     text: {
@@ -21,16 +19,16 @@ const LOGOS = {
   },
   med: {
     image: {
-      name: logo40,
-      w: 40,
+      //name: logo,
+      w: 225,
       h: 45
     },
     fontSize: 24
   },
   large: {
     image: {
-      name: logo60,
-      w: 60,
+      //Logoname: logo,
+      w: 340,
       h: 68
     },
     fontSize: 32
@@ -51,7 +49,16 @@ const useStyles = makeStyles()((theme) => ({
     display: 'block',
     objectFit: 'contain',
     objectPosition: 'center center',
-    marginRight: '2px'
+    marginRight: '2px',
+    fill: theme.palette.primary.dark
+
+    //'& svg': {
+    //  fill: theme.palette.secondary.dark
+    //}
+//    '&:hover path': {
+      //'path': {
+      //}
+//    }
   },
 
   text: {
@@ -79,14 +86,15 @@ const IpsumLogo: React.FC<{
 
   return (
     <div className={cx(s.outer, (className) ? className : '')} >
-      <div 
-        className={s.text} 
-        style={{
-          fontSize: l.fontSize,
-          lineHeight: l.image.h + 'px', 
-          ...spreadMe
-        }}
-      >ipsum messenger</div>
+      <Logo 
+        className={s.image} 
+        //alt="logo.png"
+        width={l.image.w}
+        height={l.image.h}
+        //viewBox='0 0 990 198' 
+        //src={l.image.name}
+      /> 
+
     </div>
   )
 }
@@ -94,11 +102,13 @@ const IpsumLogo: React.FC<{
 export default IpsumLogo
 
 /*
-      <img 
-        className={s.image} 
-        alt="logo.png"
-        width={l.image.w}
-        height={l.image.h}
-        src={l.image.name}
-      /> 
+      <div 
+        className={s.text} 
+        style={{
+          fontSize: l.fontSize,
+          lineHeight: l.image.h + 'px', 
+          ...spreadMe
+        }}
+      />
+
 */

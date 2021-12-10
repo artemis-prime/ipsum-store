@@ -14,33 +14,45 @@ const PALETTE = {
     white: '#fff',
   },
   primary: {
-    main: '#00c095', 
-    dark: '#019775', 
-    light: '#87d2c1', 
-    /* orig KEEP
-    main: '#028069',
-    dark: '#066655', 
-    light: '#01a486', 
-    */ 
+    main: '#008BCC',
+    dark: '#00699a',
+    light: '#339cd4',
+    contrastText: '#fff'
   },
   secondary: {
-    dark: '#01193e', // also bg large blocks, sidebars, footer
-    main: '#21076a',
-    light: '#6848c4'
-  },
-  success: {
-    //main: '#03943F',
-    main: '#1a6b4d',
-    light: '#cbf4c8',
-
+    dark: '#96377a', 
+    main: '#af4c92',
+    light: '#bf70a8',
+    contrastText: '#fff'
   },
   error: {
-    main: '#f44336',
+    dark: '#bf253b',
+    main: '#ee314c',
+    light: '#f15a70',
+    contrastText: '#fff'
+  },
+  warning: {
+    main: '#ff7c24',
+    light: '#ff9650',
+    dark: '#ec660c',
+    contrastText: '#fff'
+  },
+  info: {
+    dark: '#96377a', 
+    main: '#af4c92',
+    light: '#bf70a8',
+    contrastText: '#fff'
+  },
+  success: {
+    main: '#77c043',
+    light: '#77c043',
+    dark: '#61a331',
+    contrastText: '#fff'
   },
   text: {
-    primary: 'rgba(0, 0, 0, 0.85)',
-    secondary: 'rgba(255, 255, 255, 0.80)',
-    disabled: 'rgba(0, 0, 0, 0.40)',
+    primary: '#262626',
+    secondary: '#525252',
+    disabled: '#969696',
     hint: '#6848c4'
   },
   divider: 'rgba(0, 0, 0, 0.20)',
@@ -54,26 +66,9 @@ const SHAPE = {
   borderRadius: 4
 }
 
-const GREY_SHADES = [
-  PALETTE.common.black,  // zero'th element, so paper elevations match indices
-  '#222',
-  '#333',
-  '#3f3f3f',
-  '#444',
-  '#4f4f4f',
-  '#555',
-  '#5f5f5f',
-  '#666',
-  '#6f6f6f',
-  '#777',
-  '#767676',
-]
-
 const EXT = {
   spacing: SPACING_BASE,
   maxContainerWidth: MAX_CONTAINER_WIDTH,
-  greys: GREY_SHADES,
-  lighterText: GREY_SHADES[11],
   background: {
     dark: '#031033'
   },
@@ -186,14 +181,14 @@ export default {
     }
   },
 
-  spacing: 8,
+  spacing: SPACING_BASE,
 
   palette: {
     mode: 'light',
     ...PALETTE,
   },
   typography: {
-    fontFamily: 'futura-pt, sans-serif',
+    fontFamily: 'poppins, sans-serif',
   },
   shape: {
     ...SHAPE
@@ -204,8 +199,26 @@ export default {
     MuiButtonBase: {
       defaultProps: {
         disableRipple: true
+      },
+      styleOverrides: {
+        root: {
+          minWidth: '0 !important'
+        }
       }
     },
+
+    MuiContainer: {
+      defaultProps: {
+        disableGutters: true,
+      },
+      styleOverrides: {
+        root: {
+          // impl in style/responsivePadding.scss due to bug in MUI
+        },
+      }
+    },
+
+/*
 
     MuiButton: {
       defaultProps: {
@@ -260,16 +273,6 @@ export default {
       }
     },
 
-    MuiContainer: {
-      defaultProps: {
-        disableGutters: true
-      },
-      styleOverrides: {
-        root: {
-          // impl in style/responsivePadding.scss due to bug in MUI
-        },
-      }
-    },
 
     MuiFormControl: {
       styleOverrides: {
@@ -311,6 +314,7 @@ export default {
       }
     },
 
+    
     MuiFormLabel: {
       styleOverrides: {
         root: {
@@ -353,7 +357,7 @@ export default {
       },
       styleOverrides: {
         formControl: {
-          position: 'static'
+          //position: 'static'
         },
       }
     },
@@ -467,7 +471,7 @@ export default {
         }
       }
     },
-
+    */
   },
   
   ext: EXT

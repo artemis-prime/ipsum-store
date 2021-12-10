@@ -1,7 +1,9 @@
 import React from 'react'
 
   // TODO
-const DEFAULT_PROFILE_IMAGE_URL = process.env.PUBLIC_URL + '/default-profile.jpg'
+//const DEFAULT_PROFILE_IMAGE_URL = /*process.env.PUBLIC_URL +*/ '/default-profile.jpg'
+
+import defaultImage from './default-profile.jpg'
 
 import './profilePhoto.scss'
 
@@ -25,10 +27,10 @@ const ProfilePhoto: React.FC<{
     photoClasses = photoClasses + ' account-photo-stacked'
   }
   
-  const photoURL = (url) ? url : DEFAULT_PROFILE_IMAGE_URL
+  const photoURL = (url) ? url : defaultImage
   
   const onError = (e: any) => {
-    e.target.src = DEFAULT_PROFILE_IMAGE_URL;
+    e.target.src = defaultImage
   }
  
   return (

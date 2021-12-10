@@ -34,3 +34,18 @@ $color-brown-gray: #a1a1a1;
     font-style: italic;
   }
 }
+
+.offer-messages-card {
+  max-width: 400px;
+}
+
+.thread-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.message-outer {
+  margin: 8px;
+  margin-bottom: 16px;
+}

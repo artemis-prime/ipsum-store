@@ -34,6 +34,17 @@ export default [
         timestamp: '2021-04-23T18:25:43.511Z',
         edited: false
       },
+      {
+        author: {
+          firstName: 'Mandy',
+          lastName: 'Dandy',
+          uid: 'kfdjfll2'
+        },
+        content: 'Proin convallis quis lacus sed cursus. Integer vestibulum justo neque, nec feugiat mi bibendum vitae.',
+        timestamp: '2021-04-24T18:25:43.511Z',
+        edited: false
+      },
+
     ]
   } 
 ] as Thread[]  

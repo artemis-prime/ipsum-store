@@ -25,7 +25,7 @@ export default (theme) => ({
 
   menuShelfTop: {
     color: theme.palette.text.secondary,
-    backgroundColor: theme.palette.secondary.dark,
+    //backgroundColor: theme.palette.secondary.dark,
 
     '& h6': {
       margin: 0
@@ -45,7 +45,8 @@ export default (theme) => ({
 
   logo: {
     cursor: 'pointer',
-    margin: '7px 0px'
+    margin: '7px 0px',
+    marginRight: '20px'
   },
 
   logoLink: {

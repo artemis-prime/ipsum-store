@@ -237,7 +237,7 @@ class AuthServiceImpl implements AuthService  {
           })
 
         resolve({
-          status: `Org ${email} created successfully.`
+          status: `User ${email} created successfully.`
         })
       }
       catch (e) {

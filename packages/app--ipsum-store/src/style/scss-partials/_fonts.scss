@@ -1,83 +1,83 @@
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-Thin.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-Thin.ttf') format("truetype"); 
   font-style: normal;
   font-weight: 100;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-ThinItalic.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-ThinItalic.ttf') format("truetype"); 
   font-style: italic;
   font-weight: 100;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-Light.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-Light.ttf') format("truetype"); 
   font-style: normal;
   font-weight: 300;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-LightItalic.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-LightItalic.ttf') format("truetype"); 
   font-style: italic;
   font-weight: 300;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-Regular.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-Regular.ttf') format("truetype"); 
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-RegularItalic.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-Italic.ttf') format("truetype"); 
   font-style: italic;
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-Medium.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-Medium.ttf') format("truetype"); 
   font-style: normal;
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-MediumItalic.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-MediumItalic.ttf') format("truetype"); 
   font-style: italic;
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-Bold.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-Bold.ttf') format("truetype"); 
   font-style: normal;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-BoldItalic.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-BoldItalic.ttf') format("truetype"); 
   font-style: italic;
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-Black.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-Black.ttf') format("truetype"); 
   font-style: normal;
   font-weight: 900;
 }
 
 @font-face {
-  font-family: 'GoodSans';
-  src: url('./fonts/GoodSans/GoodSans-BlackItalic.otf') format("opentype"); /* Open Type Font */
+  font-family: 'Poppins';
+  src: url('./fonts/poppins/Poppins-BlackItalic.ttf') format("truetype"); 
   font-style: italic;
   font-weight: 900;
 }
@@ -85,7 +85,9 @@
 
 body {
   * {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif; 
   }
 }
 
+
+//font-family: 'Poppins'; //-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;

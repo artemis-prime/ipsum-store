@@ -1,3 +1,13 @@
+declare module '@mui/material/styles' {
+  interface Theme {
+    ext: any
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    ext?: any
+  }
+}
+
 import { useTheme } from '@mui/material/styles'
 import { createMakeAndWithStyles } from 'tss-react'
 
@@ -13,4 +23,3 @@ export const { makeStyles } = createMakeAndWithStyles({
       "useTheme": useTheme as (()=> MyTheme)
     */
 })
-

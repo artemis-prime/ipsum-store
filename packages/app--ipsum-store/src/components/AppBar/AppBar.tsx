@@ -77,6 +77,7 @@ const AppBar: React.FC<{
         <div className={cx(s.menuShelfInner, 'header-inner')} >
           <div className={cx(s.menuSectionOuter, s.leftMenu)}>
             <IpsumLogo className={s.logo} size='small' />
+            <MenuButtons navElements={MAIN_MENU} />
           </div>
           <div className={cx(s.menuSectionOuter, s.rightMenu)}>
             <MenuButtons navElements={RIGHT_COMMON} />
@@ -88,6 +89,13 @@ const AppBar: React.FC<{
           </div>          
         </div>
       </div>
+    </AppBarShell>
+  )
+})
+
+export default AppBar
+
+/*
       <div className={cx(s.menuShelf, s.menuShelfBottom, 'header-outermost')}>
         <div className={cx(s.menuShelfInner, 'header-inner')} >
           {auth.currentFirebaseUser && (<>
@@ -98,11 +106,7 @@ const AppBar: React.FC<{
         </>)} 
         </div>
       </div>
-    </AppBarShell>
-  )
-})
-
-export default AppBar
+*/
 
 //<MenuButtons navElements={[MAIN_MENU[1]]} />
 /*

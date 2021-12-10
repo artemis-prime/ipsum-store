@@ -6,14 +6,29 @@
     ["@babel/env", { "modules": false }]
   ],
   "plugins": [
-    ["@babel/plugin-transform-runtime", { "regenerator": true }]
+    ["@babel/plugin-transform-runtime", { "regenerator": true }],
+    ["inline-react-svg", {
+      "svgo": {
+        "plugins": [
+          {
+            "name": "preset-default",
+            "params": {
+              "overrides": {
+                "removeViewBox": false 
+              } 
+            }
+          }
+          
+            //"removeViewBox"
+          //}
+        ]
+      }
+    }]
   ]
 }
 
 /*
-
-    "react-hot-loader/babel", 
-    "@babel/plugin-proposal-object-rest-spread", 
-    "@babel/plugin-proposal-class-properties"
-
+  "react-hot-loader/babel", 
+  "@babel/plugin-proposal-object-rest-spread", 
+  "@babel/plugin-proposal-class-properties"
 */

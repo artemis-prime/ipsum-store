@@ -10,7 +10,7 @@
     header, main, footer: 
       Large widths: max-width of theme.ext.maxContainerWidth, no gutters since that doesn't make sense
       At theme.ext.maxContainerWidth, gutters are spacing(3)
-      At xs, gutters are spacing(2)
+      At sm, gutters are spacing(2)
 
 */
 @use './muiThemeMap' as mui; 
