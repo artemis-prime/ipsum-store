@@ -55,6 +55,7 @@ const AppBar: React.FC<{
   const { classes: s } = useStyles()
   
   const auth = useAuthService()
+  console.log("AUTH: ", auth)
 
   const shellProps: any = {}
   if (className) {
@@ -77,14 +78,14 @@ const AppBar: React.FC<{
         <div className={cx(s.menuShelfInner, 'header-inner')} >
           <div className={cx(s.menuSectionOuter, s.leftMenu)}>
             <IpsumLogo className={s.logo} size='small' />
-            <MenuButtons navElements={MAIN_MENU} />
+            <MenuButtons navElements={MAIN_MENU} auth={auth}/>
           </div>
           <div className={cx(s.menuSectionOuter, s.rightMenu)}>
-            <MenuButtons navElements={RIGHT_COMMON} />
-            {auth.currentFirebaseUser ? 
-              (<MenuButtons navElements={RIGHT_LOGGEDIN} handlers={handlers}/>) 
+            <MenuButtons navElements={RIGHT_COMMON} auth={auth} />
+            {auth.currentAuthUser ? 
+              (<MenuButtons navElements={RIGHT_LOGGEDIN} auth={auth} handlers={handlers}/>) 
               : 
-              (<MenuButtons navElements={RIGHT_GUEST} />)
+              (<MenuButtons navElements={RIGHT_GUEST} auth={auth} />)
             }
           </div>          
         </div>

@@ -52,13 +52,6 @@ const useStyles = makeStyles()((theme) => ({
     marginRight: '2px',
     fill: theme.palette.primary.dark
 
-    //'& svg': {
-    //  fill: theme.palette.secondary.dark
-    //}
-//    '&:hover path': {
-      //'path': {
-      //}
-//    }
   },
 
   text: {
@@ -67,9 +60,7 @@ const useStyles = makeStyles()((theme) => ({
     letterSpacing: '-0.062rem',
     position: 'relative',
   }
-
 }))
-
 
 const IpsumLogo: React.FC<{
   size: 'small' | 'med' | 'large'
