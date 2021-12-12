@@ -13,18 +13,8 @@ import { AppBarShell, MenuButtons } from '@artemis-prime/wfw/components'
 import { useIsMobile } from '@artemis-prime/wfw/util'
 import { makeStyles } from '@artemis-prime/wfw/style'
 
-
-import { 
-  //AppBarShell,
-  //BurgerMenuButton,
-  //MenuButtons,
-  IpsumLogo,
-} from '~/components'
-
-
+import { IpsumLogo } from '~/components'
 import { useAuthService } from '~/domain/auth'
-import TenantOrgSelector from './TenantOrgSelector'
-
 import MAIN_MENU from '~/settings/app/mainNav'
 import { 
   COMMON as RIGHT_COMMON, 
