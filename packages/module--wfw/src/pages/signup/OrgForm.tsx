@@ -10,8 +10,8 @@ import { TextField } from 'formik-mui'
 
 import { isValidEmail } from '@artemis-prime/wfw/util'
 
-import type WizardStopProps from './WizardStopProps'
-import BackAndForwardButtons from './BackAndForwardButtons'
+import type { WizardStopProps } from '../../components'
+import  {BackAndForwardButtons } from '../../components'
 
 const OrgForm: React.FC<WizardStopProps> = ({
   step,

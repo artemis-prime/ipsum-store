@@ -11,8 +11,8 @@ import { TextField } from 'formik-mui'
 import { isValidEmail } from '@artemis-prime/wfw/util'
 
 import Disclaimer from './disclaimer'
-import type WizardStopProps from './WizardStopProps'
-import BackAndForwardButtons from './BackAndForwardButtons'
+import type { WizardStopProps } from '../../components'
+import  {BackAndForwardButtons } from '../../components'
 
 const EmailAndPasswordForm: React.FC<WizardStopProps> = ({
   step,

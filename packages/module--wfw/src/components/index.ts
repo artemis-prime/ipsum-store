@@ -1,5 +1,6 @@
 export { default as AppBarShell}        from './AppBarShell'
 export { default as BinarySwitch}       from './BinarySwitch'
+export { default as BackAndForwardButtons}  from './Wizard/BackAndForwardButtons'
 export { default as ButtonMenu}         from './Menu/ButtonMenu'
 export { default as BurgerMenuButton}   from './Menu/BurgerMenuButton'
 export { default as CopyrightAndPrivacy}   from './CopyrightAndPrivacy'
@@ -20,4 +21,6 @@ export { default as SideDrawer}         from './SideDrawer'
 export { default as SocialLinks}        from './SocialLinks'
 export { default as TagBubble}          from './TagBubble'
 export { default as Video}              from './Video'
+export { default as WizardStop}         from './Wizard/WizardStop'
+export { default as WizardStopProps}    from './Wizard/WizardStopProps'
 

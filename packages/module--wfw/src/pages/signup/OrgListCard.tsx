@@ -1,11 +1,8 @@
 import React from 'react'
 
-import { Link } from '@artemis-prime/wfw/components'
-
-import type { TenantOrgRef } from '@ipsum-labs/domain-types'
-
-import type WizardStopProps from './WizardStopProps'
-import BackAndForwardButtons from './BackAndForwardButtons'
+import type { TenantRef } from '../../types/auth'
+import type { WizardStopProps } from '../../components'
+import { BackAndForwardButtons, Link } from '../../components'
 
 const OrgListCard: React.FC<WizardStopProps> = ({
   step,
@@ -29,7 +26,7 @@ const OrgListCard: React.FC<WizardStopProps> = ({
     <div className='org-list-outer pseudo-form'>
       <p className='message-detail'>You are a member of the following Organizations:</p>
       <ul className='org-list'>
-      {bucket.tenantOrgs.map((def: TenantOrgRef) => (
+      {bucket.tenantOrgs.map((def: TenantRef) => (
         <li className='org-list-item' key={def.tenantId}>{def.tenantId}:&nbsp;{def.fullOrgName}</li>        
       ))}
       </ul>

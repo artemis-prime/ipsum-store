@@ -1,6 +1,6 @@
-@use '../../style/scss-partials/muiThemeMap' as mui; 
-$spacing: map-get(mui.$map, 'ext-spacing') * 1px;
-$sm-width: map-get(mui.$map, 'breakpoints-sm') * 1px;
+//@use '../../style/scss-partials/muiThemeMap' as mui; 
+$spacing: 8px; // map-get(mui.$map, 'ext-spacing') * 1px;
+$sm-width: 400px; //map-get(mui.$map, 'breakpoints-sm') * 1px;
 
 .on-route-signup .form-outer {
 

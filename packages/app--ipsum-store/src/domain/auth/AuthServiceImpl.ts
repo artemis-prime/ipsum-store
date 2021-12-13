@@ -10,12 +10,11 @@ import 'firebase/compat/auth'
  
 import type {
   TenantOrg,
-  TenantOrgRef,
-  CreateUserParams,
+  TenantRef,
   TenantOrgParams,
-  UserTenantOrgsResponse,
+  UserTenantsResult,
   IpsumUser,
-  StatusResponse 
+  StatusResult 
 } from '@ipsum-labs/domain-types'
  
 import { COLLECTIONS } from '@ipsum-labs/domain-types'
@@ -145,9 +144,9 @@ class AuthServiceImpl implements AuthService  {
 
   private _setQueryLoading(b: boolean): void {this.authQueryLoading = b} 
 
-  public getUserOrgsFromEmail(email: string): Promise<UserTenantOrgsResponse> {
+  public getUserOrgsFromEmail(email: string): Promise<UserTenantsResult> {
 
-    return new Promise<UserTenantOrgsResponse>( async(resolve, reject) => {
+    return new Promise<UserTenantsResult>( async(resolve, reject) => {
       try {
         this._setQueryLoading(true)
         const userSnap = await firestore.collection(COLLECTIONS.IPSUM_USERS)
@@ -163,7 +162,7 @@ class AuthServiceImpl implements AuthService  {
 
           // fill transient Data
           // and response data
-        const orgRefs: TenantOrgRef[] = []
+        const orgRefs: TenantRef[] = []
         adminOrgsSnap.forEach((doc) => {
           const org = doc.data() as TenantOrg 
           orgRefs.push({
@@ -192,7 +191,7 @@ class AuthServiceImpl implements AuthService  {
           user!.orgs = orgRefs
         }
 
-        const result: UserTenantOrgsResponse = {
+        const result: UserTenantsResult = {
           ipsumUser: user,
           tenantOrgs: orgRefs,
         }
@@ -214,14 +213,15 @@ class AuthServiceImpl implements AuthService  {
     })
   }
  
-  public createUser({
+  public createUser(
     firstName,
     lastName,
     email,
-    password
-  }: CreateUserParams): Promise<StatusResponse> {
+    password,
+    ...args: any[]
+  ): Promise<StatusResult> {
 
-    return new Promise<StatusResponse>( async(resolve, reject) => {
+    return new Promise<StatusResult>( async(resolve, reject) => {
       try {
         this._setQueryLoading(true)
         const userCredential = await firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -249,9 +249,9 @@ class AuthServiceImpl implements AuthService  {
     })
   }
  
-  public createTenantOrg(params: TenantOrgParams): Promise<StatusResponse>  {
+  public createTenantOrg(params: TenantOrgParams): Promise<StatusResult>  {
 
-    return new Promise<StatusResponse>( async(resolve, reject) => {
+    return new Promise<StatusResult>( async(resolve, reject) => {
       try {
         this._setQueryLoading(false)
 
@@ -291,17 +291,16 @@ class AuthServiceImpl implements AuthService  {
     })
   }
  
-  public login(email: string, password: string): Promise<void> {
+  public login(email: string, password: string): Promise<StatusResult> {
 
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<StatusResult>((resolve, reject) => {
       this._setQueryLoading(true)
       firebaseAuth.signInWithEmailAndPassword(email, password)
         .then( async (userCred: firebase.auth.UserCredential) => {
             // No need to track this use here, since we are subscribing to auth changes
             // and will bolt a IpsumUser onto the logged in Firebase User there. 
-          //const msg = `User ${userCred.user!.email} successfully logged in.`
-          //console.log(msg)
-          resolve()
+          const msg = `User ${userCred.user!.email} successfully logged in.`
+          resolve({status: msg})
         })
         .catch((e) => {
           let errorMessage = ''
@@ -350,9 +349,9 @@ class AuthServiceImpl implements AuthService  {
     })
   }
 
-  public requestPasswordUpdate(email: string): Promise<StatusResponse> {
+  public requestPasswordUpdate(email: string): Promise<StatusResult> {
 
-    return new Promise<StatusResponse>((resolve, reject) => {
+    return new Promise<StatusResult>((resolve, reject) => {
       this._setQueryLoading(true)
       firebaseAuth.sendPasswordResetEmail(email, {
         url: 'http://localhost:8080/resetPassword',
@@ -370,15 +369,15 @@ class AuthServiceImpl implements AuthService  {
     })
   }
 
-  public completePasswordUpdate(oobCode: string, password: string): Promise<void> {
+  public completePasswordUpdate(oobCode: string, password: string): Promise<StatusResult> {
 
-    return new Promise<void>( async (resolve, reject) => {
+    return new Promise<StatusResult>( async (resolve, reject) => {
       try {
         this._setQueryLoading(true)
         await firebaseAuth.checkActionCode(oobCode)
         await firebaseAuth.confirmPasswordReset(oobCode, password)
         await this.logout()
-        resolve()
+        resolve({ status: 'Password reset. Please log in' })
       }
       catch (e) {
         reject(errorToString(e))

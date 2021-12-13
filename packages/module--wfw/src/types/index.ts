@@ -9,6 +9,8 @@ export type {
   FacetSelections
 } from './Facet'
 
+export type { default as Address } from './Address'
+export type { default as StatusResult } from './StatusResult'
 export type { default as NounDisplay } from './NounDisplay'
 export type { default as ImageDef } from './ImageDef'
 export type { default as NavElement } from './NavElement'

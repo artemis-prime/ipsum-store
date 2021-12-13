@@ -9,23 +9,20 @@ import {
 
 //import { GoogleReCaptcha } from 'react-google-recaptcha-v3'
 
-import type { CreateUserParams } from '@ipsum-labs/domain-types'
 import { errorToString } from '@ipsum-labs/util'
 
-import { Link } from '@artemis-prime/wfw/components'
+import {  Link } from '../../components'
+import type { WizardStop, WizardStopProps } from '../../components'
 
-import { useAuthService } from '~/domain/auth'
-import _str from '~/settings/strings'
+//import { useAuthService } from '~/domain/auth'
 
-import type WizardStop from './WizardStop'
 import EmailAndPasswordForm  from './EmailAndPasswordForm'
 import OrgForm  from './OrgForm'
 import OrgListCard  from './OrgListCard'
-import type WizardStopProps from './WizardStopProps'
 
 import './style.scss'
 
-const POST_LOGIN = '/messages'
+//const POST_LOGIN = '/messages'
 
 const stopMap = new Map<string, WizardStop>()
 stopMap.set('user', {
@@ -104,11 +101,9 @@ const SignupPage: React.FC<{}> = () => {
           }
         }
         else if (bucket().tenantOrgs.length > 0) {
-          const params = {
-            ...bucket().stops[stop]  
-          } as CreateUserParams
+          const { firstName, lastName, email, password } = bucket().stops[stop]  
             // Also logs in the new user
-          const status = await auth.createUser(params)
+          const status = await auth.createUser(firstName, lastName, email, password)
           //console.log(status)
           bucket().userCreated = true
             // A marker for later
@@ -186,11 +181,9 @@ const SignupPage: React.FC<{}> = () => {
 
           // No user yet
         if (!bucket().ipsumUser) {
-          const params = {
-            ...bucket().stops['user']  
-          } as CreateUserParams
+          const { firstName, lastName, email, password } = bucket().stops['user']  
             // Also logs in the new user
-          const status = await auth.createUser(params)
+          const status = await auth.createUser(firstName, lastName, email, password)
           bucket().userCreated = true
         }
           // Was a user just created (and logged in)?

@@ -1,4 +1,4 @@
-import type Address from './Address'
+import type Address from '../Address'
 
 export default interface TenantOrg { 
 

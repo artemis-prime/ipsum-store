@@ -1,6 +1,6 @@
 import type Address from '../Address'
 
-export default interface TenantOrgParams 
+export default interface TenantParams 
 {
   name: string
   adminEmail: string
